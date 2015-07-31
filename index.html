@@ -1,0 +1,857 @@
+<!DOCTYPE html>
+	<html class="sl-root base export loaded">
+	<head>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+		<title>Docker: Slides</title>
+		<meta name="description" content="Slides">
+
+		<link rel="stylesheet" type="text/css" href="lib/offline-v2.css">
+	</head>
+	<body class="reveal-viewport theme-font-montserrat theme-color-sky-blue">
+		<div class="reveal">
+			<div class="slides">
+				<section><div class="sl-block" data-block-type="image" data-block-id="bcc4ba46c0c07d16c8bdfe3918a17c59" style="min-width: 30px; min-height: 30px; width: 596.431111111111px; height: 532px; left: 182px; top: 70px;"><div class="sl-block-content" style="z-index: 11;"><img data-natural-width="1009" data-natural-height="900" style="" data-src="docker/1609019-pasted-from-clipboard.png"></div></div>
+<div class="sl-block" data-block-type="text" data-block-id="2d085a7451640e9b94a67d3101dae554" style="height: auto; min-width: 30px; min-height: 30px; width: 600px; left: 80px; top: 587px;"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 12;">
+<p style="text-align:left"><span style="font-size:0.7em">07/2015</span></p>
+
+<p style="text-align:left"><span style="font-size:0.7em">Michaël Garrez</span></p>
+</div></div></section><section class="stack"><section><div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 302px; height: auto;" data-block-id="cca897cefe5da235a980b4fc91aa9764"><div class="sl-block-content" data-placeholder-tag="h1" data-placeholder-text="Title Text" style="z-index: 10;">
+<h1>What is Docker ?</h1>
+</div></div>
+<div class="sl-block" data-block-type="image" style="min-width: 30px; min-height: 30px; width: 156.955555555556px; height: 140px; left: 3px; top: 0px;" data-block-id="bab8958622467cfda02bfd40c3ac2b8a"><div class="sl-block-content" style="z-index: 12;"><img data-natural-width="1009" data-natural-height="900" style="" data-src="docker/1609019-pasted-from-clipboard.png"></div></div></section><section><div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 66px; height: auto;" data-block-id="5cb50a2658c105ca17cf8d9a20b8da48"><div class="sl-block-content" data-placeholder-tag="h2" data-placeholder-text="Title Text" style="z-index: 10;">
+<h2>Wikipedia Definition</h2>
+</div></div>
+<div class="sl-block" data-block-type="text" style="width: 800px; left: 82px; top: 210px; height: auto;" data-block-id="99798fdbc982de53185d9536f44da5f0"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 11;">
+<blockquote>
+<p><strong>Docker</strong><span style="color:rgb(37, 37, 37); text-align:start"> is an </span><a href="https://en.wikipedia.org/wiki/Open-source" target="_blank">open-source</a><span style="color:rgb(37, 37, 37); text-align:start"> project that automates the deployment of </span><a href="https://en.wikipedia.org/wiki/Application_software" target="_blank">applications</a><span style="color:rgb(37, 37, 37); text-align:start"> inside </span><a href="https://en.wikipedia.org/wiki/Software_container" target="_blank">software containers</a><span style="color:rgb(37, 37, 37); text-align:start">, by providing an additional layer of abstraction and automation of </span><a href="https://en.wikipedia.org/wiki/Operating-system-level_virtualization" target="_blank">operating-system-level virtualization</a><span style="color:rgb(37, 37, 37); text-align:start"> on </span><a href="https://en.wikipedia.org/wiki/Linux" target="_blank">Linux</a><span style="color:rgb(37, 37, 37); text-align:start">.</span></p>
+</blockquote>
+</div></div>
+<div class="sl-block" data-block-type="image" style="min-width: 30px; min-height: 30px; width: 156.955555555556px; height: 140px; left: 3px; top: 0px;" data-block-id="3223e083c44963fc8d3e1e84fccdaffc"><div class="sl-block-content" style="z-index: 13;"><img data-natural-width="1009" data-natural-height="900" style="" data-src="docker/1609019-pasted-from-clipboard.png"></div></div></section><section><div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 66px; height: auto;" data-block-id="dcca56365e33dea974f32d833a80c33b"><div class="sl-block-content" data-placeholder-tag="h2" data-placeholder-text="Title Text" style="z-index: 10;">
+<h2>Linux Containers</h2>
+</div></div>
+<div class="sl-block" data-block-type="text" style="width: 800px; left: 82px; top: 210px; height: auto;" data-block-id="fe4d71209d8480f7fb76c2ae04239eb9"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 11;">
+<p>Docker is based on <strong>LXC </strong>(Linux Containers) which allows</p>
+
+<p>it to isolate containers from each other.</p>
+
+<p> </p>
+
+<p><strong>LXC</strong> use mainly two <strong>Linux Kernel</strong> features to acheave it :</p>
+
+<p> </p>
+
+<ul>
+	<li>Namespaces (Isolation of resources)</li>
+	<li>Cgroups (Isolation of resource usage as CPU/RAM)</li>
+</ul>
+</div></div>
+<div class="sl-block" data-block-type="image" style="width: 156.955555555556px; height: 140px; left: 3px; top: 0px;" data-block-id="8e7de2147da2c26bf48139b2f334d1bf"><div class="sl-block-content" style="z-index: 13;"><img data-natural-width="1009" data-natural-height="900" style="" data-src="docker/1609019-pasted-from-clipboard.png"></div></div></section><section><div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 66px; height: auto;" data-block-id="1e44765d4fb55f068c7a95c7efa66332"><div class="sl-block-content" data-placeholder-tag="h2" data-placeholder-text="Title Text" style="z-index: 10;" dir="ui">
+<h2>Docker World</h2>
+</div></div>
+<div class="sl-block" data-block-type="text" style="width: 800px; left: 82px; top: 210px; height: auto;" data-block-id="b8b8a1b932d9c94068bf130506729815"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 11;">
+<p>Docker can be split in multiple different parts :</p>
+
+<p> </p>
+
+<ul>
+	<li>Docker Engine</li>
+	<li>Docker Hub</li>
+	<li>Docker Company</li>
+</ul>
+</div></div>
+<div class="sl-block" data-block-type="image" style="width: 156.955555555556px; height: 140px; left: 3px; top: 0px;" data-block-id="2363a3b1a7ea1837de7ae8dd47195d17"><div class="sl-block-content" style="z-index: 13;"><img data-natural-width="1009" data-natural-height="900" style="" data-src="docker/1609019-pasted-from-clipboard.png"></div></div></section></section><section class="stack"><section><div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 66px; height: auto;" data-block-id="2325a1fd1e02347f4a46fc90f97a6e58"><div class="sl-block-content" data-placeholder-tag="h2" data-placeholder-text="Title Text" style="z-index: 11;" dir="ui">
+<h2>How to use Docker ?</h2>
+</div></div>
+<div class="sl-block" data-block-type="text" style="width: 800px; left: 82px; top: 371px; height: auto;" data-block-id="70b758b9391d8733c12f2322e0d5cbf1"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 12;">
+<p>Docker can be used <strong>natively </strong>on Linux (and only Linux) by the simple bash command :</p>
+</div></div>
+<div class="sl-block" data-block-type="image" style="width: 156.955555555556px; height: 140px; left: 3px; top: 0px;" data-block-id="1150e984cef5ebd4a7694a31d6c54a26"><div class="sl-block-content" style="z-index: 13;"><img data-natural-width="1009" data-natural-height="900" style="" data-src="docker/1609019-pasted-from-clipboard.png"></div></div>
+<div class="sl-block" data-block-type="code" data-block-id="75330984e9657091efd949299a6fb69a" style="min-width: 30px; min-height: 30px; width: 480px; height: 72px; left: 240px; top: 481px;"><div class="sl-block-content" style="z-index: 14; border: 3px solid rgb(0, 0, 0);" data-highlight-theme="zenburn"><pre class="bash"><code>
+wget -qO- https://get.docker.com/ | sh</code></pre></div></div>
+<div class="sl-block" data-block-type="text" data-block-id="3a67a175e82ac287c33fe211ab0d6a70" style="height: auto; min-width: 30px; min-height: 30px; width: 600px; left: 180px; top: 632px;"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 15;">
+<p><span style="font-size:0.7em">Docker installation requires at least 3.13 Linux Kernel.</span></p>
+</div></div>
+<div class="sl-block" data-block-type="image" data-block-id="dd1ba6703cc2fc6844ff659c7bf19711" style="min-width: 30px; min-height: 30px; width: 244.706650831354px; height: 173px; left: 118px; top: 161px;"><div class="sl-block-content" style="z-index: 16;"><img style="" data-natural-width="1191" data-natural-height="842" data-src="docker/1609042-logo-ubuntu_st_no_-black_orange-hex.png"></div></div>
+<div class="sl-block" data-block-type="image" data-block-id="7e2945c78c05d20becc24fb5a417f2be" style="min-width: 30px; min-height: 30px; width: 91px; height: 119.816666666667px; left: 391px; top: 170px;"><div class="sl-block-content" style="z-index: 17;"><img style="" data-natural-width="300" data-natural-height="395" data-src="docker/1609046-Debian_logo.png"></div></div>
+<div class="sl-block" data-block-type="image" data-block-id="37c1881acc21f6df1fafee7fc5b0ce63" style="min-width: 30px; min-height: 30px; width: 215.533980582524px; height: 148px; left: 538px; top: 156px;"><div class="sl-block-content" style="z-index: 18;"><img data-natural-width="300" data-natural-height="206" style="" data-src="docker/1609047-centos.logo.png"></div></div></section><section><div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 66px; height: auto;" data-block-id="9deb3d4caa41bfb60c7259cb75c2847a"><div class="sl-block-content" data-placeholder-tag="h2" data-placeholder-text="Title Text" style="z-index: 11;" dir="ui">
+<h2>How to use Docker ?</h2>
+</div></div>
+<div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 350px; height: auto;" data-block-id="142911d78c83190dab89370e2a574366"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 12;">
+<p>Docker uses <strong>boot2docker </strong>to create a VM with a <em>Tiny Core Linux </em>version including Docker.</p>
+</div></div>
+<div class="sl-block" data-block-type="image" style="width: 156.955555555556px; height: 140px; left: 3px; top: 0px;" data-block-id="717fd750afb0fe0bedb68812e25032f1"><div class="sl-block-content" style="z-index: 13;"><img data-natural-width="1009" data-natural-height="900" style="" data-src="docker/1609019-pasted-from-clipboard.png"></div></div>
+<div class="sl-block" data-block-type="image" data-block-id="2295a98e5fe77ae100e27bb8af823391" style="min-width: 30px; min-height: 30px; width: 170px; height: 170px; left: 235px; top: 163px;"><div class="sl-block-content" style="z-index: 14;"><img style="" data-natural-width="900" data-natural-height="900" data-src="docker/1609049-Windows_logo-7.png"></div></div>
+<div class="sl-block" data-block-type="image" data-block-id="423d32d108632efd30759fea425484ae" style="min-width: 30px; min-height: 30px; width: 140px; height: 140px; left: 490px; top: 170px;"><div class="sl-block-content" style="z-index: 15;"><img style="" data-natural-width="300" data-natural-height="300" data-src="docker/1609050-apple-mac-logo-icon-300x300.png"></div></div></section></section><section class="stack"><section><div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 66px; height: auto;" data-block-id="a7af1d3ef9892a4fb9ccacbe2838a9dc"><div class="sl-block-content" data-placeholder-tag="h2" data-placeholder-text="Title Text" style="z-index: 11;" dir="ui">
+<h2>Container VS VM</h2>
+</div></div>
+<div class="sl-block" data-block-type="image" style="width: 156.955555555556px; height: 140px; left: 3px; top: 0px;" data-block-id="f9fdeb9f507b594c6703d85faa18f917"><div class="sl-block-content" style="z-index: 12;"><img data-natural-width="1009" data-natural-height="900" style="" data-src="docker/1609019-pasted-from-clipboard.png"></div></div>
+<div class="sl-block" data-block-type="image" data-block-id="5f3d39c9d50d261a85da327746f0683f" style="min-width: 30px; min-height: 30px; width: 753.515320334262px; height: 424px; left: 103px; top: 210px;"><div class="sl-block-content" style="z-index: 14; border-style: solid; border-width: 1px;"><img style="" data-natural-width="638" data-natural-height="359" data-src="docker/1609057-docker-containers-vms.png"></div></div></section><section><div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 66px; height: auto;" data-block-id="71928cdeb51396fcd0dda1bfc95c9769"><div class="sl-block-content" data-placeholder-tag="h2" data-placeholder-text="Title Text" style="z-index: 11;" dir="ui">
+<h2>Container VS Image</h2>
+</div></div>
+<div class="sl-block" data-block-type="image" style="width: 156.955555555556px; height: 140px; left: 3px; top: 0px;" data-block-id="94b3f73faeedb16dca975a93b2b5f637"><div class="sl-block-content" style="z-index: 12;"><img data-natural-width="1009" data-natural-height="900" style="" data-src="docker/1609019-pasted-from-clipboard.png"></div></div>
+<div class="sl-block" data-block-type="text" data-block-id="b1090f87068e06539e1fd83d1d6c8cd4" style="height: auto; min-width: 30px; min-height: 30px; width: 181px; left: 80px; top: 191px;"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 13;">
+<p><strong>Image</strong></p>
+</div></div>
+<div class="sl-block" data-block-type="text" data-block-id="c6a89fb960014c3d803734f9428130cf" style="height: auto; min-width: 30px; min-height: 30px; width: 700px; left: 160px; top: 261px;"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 14;">
+<p style="text-align:left"><span style="font-size:0.7em">An image is an inert <strong>snapshot </strong>of a container.</span></p>
+
+<p style="text-align:left"> </p>
+
+<p style="text-align:left"><span style="font-size:0.7em">When runned (with a <em>run </em>command) it <strong>becomes a container</strong>.</span></p>
+
+<p style="text-align:left"> </p>
+
+<p style="text-align:left"><span style="font-size:0.7em">As images can be quite heavy they are designed to be composed of <strong>layers of other images</strong> which allows to minimize an image weight.</span></p>
+
+<p style="text-align:left"> </p>
+
+<p style="text-align:left"><span style="font-size:0.7em">Images are stored on <strong>Docker Hub</strong>.</span></p>
+</div></div></section><section><div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 66px; height: auto;" data-block-id="4980d26dff1e473f8d1728bad536130e"><div class="sl-block-content" data-placeholder-tag="h2" data-placeholder-text="Title Text" style="z-index: 11;" dir="ui">
+<h2>Container VS Image</h2>
+</div></div>
+<div class="sl-block" data-block-type="image" style="width: 156.955555555556px; height: 140px; left: 3px; top: 0px;" data-block-id="c1862735d3c52a27e6bef6351b75d615"><div class="sl-block-content" style="z-index: 12;"><img data-natural-width="1009" data-natural-height="900" style="" data-src="docker/1609019-pasted-from-clipboard.png"></div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 181px; left: 80px; top: 191px;" data-block-id="6ae8fc400805826f77eb45d38bc868cf"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 13;">
+<p><strong>Image</strong></p>
+</div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 700px; left: 160px; top: 261px;" data-block-id="5450f5e950b88a4a581cf04ed74b4905"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 14;">
+<p style="text-align:left"><span style="font-size:0.7em">An image is built from a Dockerfile. A file describing how the image is supposed to behave, what it extends from, ...</span></p>
+
+<p style="text-align:left"> </p>
+
+<p style="text-align:left"><span style="font-size:0.7em"><em>docker images </em>command lists all local images :</span></p>
+</div></div>
+<div class="sl-block" data-block-type="image" data-block-id="a7c1e9c40cb93da1b6f48e6d6e562870" style="min-width: 30px; min-height: 30px; width: 793.845070422535px; height: 157px; left: 160px; top: 482px;"><div class="sl-block-content" style="z-index: 15; border-style: solid; border-width: 1px;"><img data-natural-width="718" data-natural-height="142" style="" data-src="docker/1609061-Capture_d__cran_2015-07-30___15.22.33.png"></div></div></section><section><div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 66px; height: auto;" data-block-id="37c0692aee114b1e991fe0844f6d3ce5"><div class="sl-block-content" data-placeholder-tag="h2" data-placeholder-text="Title Text" style="z-index: 11;" dir="ui">
+<h2>Container VS Image</h2>
+</div></div>
+<div class="sl-block" data-block-type="image" style="width: 156.955555555556px; height: 140px; left: 3px; top: 0px;" data-block-id="30b0e5cf2d5047ac04d23afa74895d73"><div class="sl-block-content" style="z-index: 12;"><img data-natural-width="1009" data-natural-height="900" style="" data-src="docker/1609019-pasted-from-clipboard.png"></div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 181px; left: 80px; top: 191px;" data-block-id="22cd8e942f3bd8d4ad236eb30d55b67b"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 13;">
+<p><strong>Container</strong></p>
+</div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 700px; left: 160px; top: 261px;" data-block-id="fa672ab93331c707f3bd4c30d61b5e52"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 14;">
+<p style="text-align:left"><span style="font-size:21px">Programmatically speaking, if an image what a class, then a container would be an instance of this class.</span></p>
+
+<p style="text-align:left"> </p>
+
+<p style="text-align:left"><span style="font-size:21px">You may launch multiple containers for the same image.</span></p>
+
+<p style="text-align:left"><span style="font-size:0.7em"><em>docker ps </em>command lists all running containers :</span></p>
+</div></div>
+<div class="sl-block" data-block-type="image" data-block-id="5ae4258c734e4d7c82d8711dd6e04c0b" style="min-width: 30px; min-height: 30px; width: 957px; height: 35.8770706190061px; left: 3px; top: 529.561464690497px;"><div class="sl-block-content" style="z-index: 15; border-style: solid; border-width: 1px;"><img data-natural-width="1147" data-natural-height="43" style="" data-src="docker/1609069-Capture_d__cran_2015-07-30___15.25.59.png"></div></div></section></section><section class="stack"><section><div class="sl-block" data-block-type="text" style="width: 733px; left: 174px; top: 66px; height: auto;" data-block-id="a87fa37bbb399c37411970563f32f625"><div class="sl-block-content" data-placeholder-tag="h2" data-placeholder-text="Title Text" style="z-index: 10;" dir="ui">
+<h2>Build our first container</h2>
+</div></div>
+<div class="sl-block" data-block-type="image" style="width: 156.955555555556px; height: 140px; left: 3px; top: 0px;" data-block-id="94b8f9755e798e034c0f98dec23a6f9f"><div class="sl-block-content" style="z-index: 11;"><img data-natural-width="1009" data-natural-height="900" style="" data-src="docker/1609019-pasted-from-clipboard.png"></div></div>
+<div class="sl-block" data-block-type="code" data-block-id="1dc1d0f7860eb55d5e8d3b17fdf042f9" style="min-width: 30px; min-height: 30px; width: 522px; height: 64px; left: 220px; top: 292px;"><div class="sl-block-content" style="z-index: 12; font-size: 150%;"><pre class="bash"><code>$ docker run -itd ubuntu</code></pre></div></div>
+<div class="sl-block" data-block-type="text" data-block-id="e71bc6a07e4ca5bed83af25ec4aa8483" style="height: auto; min-width: 30px; min-height: 30px; width: 600px; left: 180px; top: 190px;"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 14;">
+<p>To create a container from the official ubuntu image :</p>
+</div></div>
+<div class="sl-block" data-block-type="text" data-block-id="3a9a0c4f8985fcc7359040fb8ac49196" style="height: auto; min-width: 30px; min-height: 30px; width: 600px; left: 181px; top: 508px;"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 15;">
+<p>To enter into a container with your terminal :</p>
+</div></div>
+<div class="sl-block" data-block-type="code" style="min-width: 30px; min-height: 30px; width: 659px; height: 61px; left: 151px; top: 607px;" data-block-id="12b75c34626c3e9f819e231bb54f0a1d"><div class="sl-block-content" style="z-index: 16; font-size: 150%;"><pre class="bash"><code>$ docker exec -it CONTAINERID /bin/bash</code></pre></div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; min-width: 30px; min-height: 30px; width: 680px; left: 141px; top: 371px;" data-block-id="38bcbf3e4e7c09e959cd2e28b65c2887"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 17;">
+<p>To check your running containers and their ids :</p>
+</div></div>
+<div class="sl-block" data-block-type="code" style="min-width: 30px; min-height: 30px; width: 239px; height: 64px; left: 362px; top: 426px;" data-block-id="36b3cc9d97408f5e6892f3b635d5771f"><div class="sl-block-content" style="z-index: 18; font-size: 150%;"><pre class="bash"><code>$ docker ps</code></pre></div></div></section><section><div class="sl-block" data-block-type="text" style="width: 733px; left: 174px; top: 66px; height: auto;" data-block-id="b138eb12b9dff51b88b002e54ea18fec"><div class="sl-block-content" data-placeholder-tag="h2" data-placeholder-text="Title Text" style="z-index: 11;" dir="ui">
+<h2>Turn our container in an image</h2>
+</div></div>
+<div class="sl-block" data-block-type="image" style="width: 156.955555555556px; height: 140px; left: 3px; top: 0px;" data-block-id="a4a24d71e054a9c321992acaa64a41d4"><div class="sl-block-content" style="z-index: 12;"><img data-natural-width="1009" data-natural-height="900" style="" data-src="docker/1609019-pasted-from-clipboard.png"></div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 600px; left: 190px; top: 261px;" data-block-id="99d7cddd1c7666ef9aa33d37fa97f465"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 13;">
+<p>As said before : </p>
+</div></div>
+<div class="sl-block" data-block-type="text" data-block-id="9da5dc8c78c3efe281a5337fd7f624f5" style="height: auto; min-width: 30px; min-height: 30px; width: 600px; left: 174px; top: 331px;"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 14;">
+<blockquote>
+<p> An image is a snapshot of a container</p>
+</blockquote>
+</div></div>
+<div class="sl-block" data-block-type="text" data-block-id="0278cac06a55ac088f37e24d84465e87" style="height: auto; min-width: 30px; min-height: 30px; width: 600px; left: 180px; top: 420px;"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 15;">
+<p>Let's take a snapshot of our container :</p>
+</div></div>
+<div class="sl-block" data-block-type="code" data-block-id="f2f8ffb066b948f3709ec544558ca186" style="min-width: 30px; min-height: 30px; width: 750px; height: 51px; left: 105px; top: 517px;"><div class="sl-block-content" style="z-index: 16;"><pre class="bash"><code>$ docker commit -m "First commit" CONTAINERID babacooll/lftmyfirstimage</code></pre></div></div></section><section><div class="sl-block" data-block-type="text" style="width: 733px; left: 174px; top: 66px; height: auto;" data-block-id="fcea2f089738e065939b10af5aa28d3d"><div class="sl-block-content" data-placeholder-tag="h2" data-placeholder-text="Title Text" style="z-index: 10;" dir="ui">
+<h2>Build a container</h2>
+</div></div>
+<div class="sl-block" data-block-type="image" style="width: 156.955555555556px; height: 140px; left: 3px; top: 0px;" data-block-id="6c847e5ae1ecd9bee4b99c3ac3285af1"><div class="sl-block-content" style="z-index: 11;"><img data-natural-width="1009" data-natural-height="900" style="" data-src="docker/1609019-pasted-from-clipboard.png"></div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 600px; left: 180px; top: 177px;" data-block-id="5f039893bdc23b179958d1f6f4adfbb5"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 12;">
+<p>You can now create as many container from this image as you want :</p>
+</div></div>
+<div class="sl-block" data-block-type="code" style="width: 678px; height: 67px; left: 141px; top: 428px;" data-block-id="233aff986153f5fdcd6f845b57e8bbbd"><div class="sl-block-content" style="z-index: 13; font-size: 150%;"><pre class="bash"><code>$ docker run -dit babacooll/lftmyfirstimage</code></pre></div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; min-width: 30px; min-height: 30px; width: 600px; left: 82px; top: 600px;" data-block-id="c67099ffffc6ddb71f368a4c9006cb9c"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 14;">
+<p>-d : Daemonized</p>
+
+<p>-it : Allocate TTY</p>
+</div></div>
+<div class="sl-block" data-block-type="shape" style="min-width: 4px; min-height: 4px; width: 48px; height: 87px; left: 358px; top: 495px;" data-block-id="94ade1a74ca8f72b14e7eef2efe8cd0a"><div class="sl-block-content" data-shape-type="symbol-thin-arrow-up" data-shape-fill-color="#000000" data-shape-stretch="true" style="z-index: 15;"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="100%" height="100%" preserveaspectratio="none" viewbox="4 2 24 28"><g class="shape-element" fill="#000000"><path d="M27.414 12.586l-10-10c-0.781-0.781-2.047-0.781-2.828 0l-10 10c-0.781 0.781-0.781 2.047 0 2.828s2.047 0.781 2.828 0l6.586-6.586v19.172c0 1.105 0.895 2 2 2s2-0.895 2-2v-19.172l6.586 6.586c0.39 0.39 0.902 0.586 1.414 0.586s1.024-0.195 1.414-0.586c0.781-0.781 0.781-2.047 0-2.828z"></path></g></svg></div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; min-width: 30px; min-height: 30px; width: 487px; left: 420px; top: 287px;" data-block-id="ace0a325271f78c86e3ba4e9030107f8"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 17;">
+<p>Image name</p>
+</div></div>
+<div class="sl-block" data-block-type="shape" style="min-width: 4px; min-height: 4px; width: 48px; height: 88px; left: 652px; top: 338px;" data-block-id="381dbd20c5f65e6907f5def97cfbaf25"><div class="sl-block-content" data-shape-type="symbol-thin-arrow-down" data-shape-fill-color="#000000" data-shape-stretch="true" style="z-index: 18;"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="100%" height="100%" preserveaspectratio="none" viewbox="4 2 24 28"><g class="shape-element" fill="#000000"><path d="M4.586 19.414l10 10c0.781 0.781 2.047 0.781 2.828 0l10-10c0.781-0.781 0.781-2.047 0-2.828s-2.047-0.781-2.828 0l-6.586 6.586v-19.172c0-1.105-0.895-2-2-2s-2 0.895-2 2v19.172l-6.586-6.586c-0.391-0.39-0.902-0.586-1.414-0.586s-1.024 0.195-1.414 0.586c-0.781 0.781-0.781 2.047 0 2.828z"></path></g></svg></div></div></section><section><div class="sl-block" data-block-type="text" style="width: 733px; left: 174px; top: 66px; height: auto;" data-block-id="d8d887cc1ce25f9da9a660dfce7f7a69"><div class="sl-block-content" data-placeholder-tag="h2" data-placeholder-text="Title Text" style="z-index: 11;" dir="ui">
+<h2>Dockerfile</h2>
+</div></div>
+<div class="sl-block" data-block-type="image" style="width: 156.955555555556px; height: 140px; left: 3px; top: 0px;" data-block-id="1db796eb538970001146269beb3536db"><div class="sl-block-content" style="z-index: 12;"><img data-natural-width="1009" data-natural-height="900" style="" data-src="docker/1609019-pasted-from-clipboard.png"></div></div>
+<div class="sl-block" data-block-type="text" data-block-id="3efdc5356121d58ef3052762b85bdeac" style="height: auto; min-width: 30px; min-height: 30px; width: 798.5px; left: 81.5px; top: 331px;"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 13;">
+<p>This approach is nice but as developers</p>
+
+<p>we highly prefer working in files than terminals.</p>
+
+<p> </p>
+
+<p>That's why Docker uses <strong>Dockerfiles</strong>.</p>
+</div></div></section><section><div class="sl-block" data-block-type="text" style="width: 733px; left: 174px; top: 66px; height: auto;" data-block-id="cce251c1ba52b3085abd9e85a0a04fb7"><div class="sl-block-content" data-placeholder-tag="h2" data-placeholder-text="Title Text" style="z-index: 10;" dir="ui">
+<h2>Dockerfile</h2>
+</div></div>
+<div class="sl-block" data-block-type="image" style="width: 156.955555555556px; height: 140px; left: 3px; top: 0px;" data-block-id="053494dc815adc074b85ed7c381a1bb1"><div class="sl-block-content" style="z-index: 11;"><img data-natural-width="1009" data-natural-height="900" style="" data-src="docker/1609019-pasted-from-clipboard.png"></div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 798.5px; left: 80px; top: 210px;" data-block-id="c8b8e62a0f2ef6d4773dac78d92b44c0"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 13;">
+<p>A <strong>Dockerfile </strong><em>translation </em>of our current image would be :</p>
+</div></div>
+<div class="sl-block" data-block-type="code" data-block-id="32d28509c6f6ca7720929c4f31230436" style="min-width: 30px; min-height: 30px; width: 737px; height: 162px; left: 111px; top: 280px;"><div class="sl-block-content" style="z-index: 14;"><pre><code>FROM ubuntu
+MAINTAINER Michael Garrez &lt;michael.garrez@gmail.com&gt;
+
+ENV REFRESHED_AT 2015-05-11
+
+RUN mkdir -p /var/www
+</code></pre></div></div>
+<div class="sl-block" data-block-type="text" data-block-id="586cebe7b5d78196c73dfd10b431c26c" style="height: auto; min-width: 30px; min-height: 30px; width: 600px; left: 180px; top: 471px;"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 15;">
+<p>To build an image from this Dockerfile :</p>
+</div></div>
+<div class="sl-block" data-block-type="code" style="min-width: 30px; min-height: 30px; width: 754px; height: 70px; left: 103px; top: 560px;" data-block-id="5b063a96a6b27366090b10397c7a2695"><div class="sl-block-content" style="z-index: 16; border: 1px solid rgb(0, 0, 0); font-size: 147%;"><pre class="bash"><code>$ docker build -t babacooll/lftmysecondimage .</code></pre></div></div></section><section><div class="sl-block" data-block-type="text" style="width: 733px; left: 174px; top: 66px; height: auto;" data-block-id="3b8b2dc6cf8f53f82fc3ec418881bfe3"><div class="sl-block-content" data-placeholder-tag="h2" data-placeholder-text="Title Text" style="z-index: 10;" dir="ui">
+<h2>Dockerfile</h2>
+</div></div>
+<div class="sl-block" data-block-type="image" style="width: 156.955555555556px; height: 140px; left: 3px; top: 0px;" data-block-id="1c670a988648c0d5190d72e7234f124e"><div class="sl-block-content" style="z-index: 11;"><img data-natural-width="1009" data-natural-height="900" style="" data-src="docker/1609019-pasted-from-clipboard.png"></div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 798.5px; left: 80px; top: 210px;" data-block-id="af05b090aa044502235ef6907febc0c9"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 13;">
+<p>A <strong>Dockerfile </strong><em>translation </em>of our current image would be :</p>
+</div></div>
+<div class="sl-block" data-block-type="code" style="width: 747px; height: 162px; left: 106px; top: 280px;" data-block-id="f36e819840b802361a85ca56e5908466"><div class="sl-block-content" style="z-index: 14;"><pre><code>FROM ubuntu
+MAINTAINER Michael Garrez &lt;michael.garrez@gmail.com&gt;
+
+ENV REFRESHED_AT 2015-05-11
+
+RUN mkdir -p /var/www
+</code></pre></div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 600px; left: 180px; top: 471px;" data-block-id="54c896366011e2f81efef8eeaf2a8d34"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 15;">
+<p>To build an image from this Dockerfile :</p>
+</div></div>
+<div class="sl-block" data-block-type="code" style="width: 765px; height: 70px; left: 98px; top: 560px;" data-block-id="eb10d43683c5d73478e92e02f716e73b"><div class="sl-block-content" style="z-index: 16; border: 1px solid rgb(0, 0, 0); font-size: 147%;"><pre class="bash"><code>$ docker build -t babacooll/lftmysecondimage .</code></pre></div></div></section><section><div class="sl-block" data-block-type="text" style="width: 733px; left: 174px; top: 66px; height: auto;" data-block-id="d83f1dbadb5e767dfdf57100a5290d6b"><div class="sl-block-content" data-placeholder-tag="h2" data-placeholder-text="Title Text" style="z-index: 10;" dir="ui">
+<h2>Container</h2>
+</div></div>
+<div class="sl-block" data-block-type="image" style="width: 156.955555555556px; height: 140px; left: 3px; top: 0px;" data-block-id="ee90e4b22583105083a2c678165fb497"><div class="sl-block-content" style="z-index: 11;"><img data-natural-width="1009" data-natural-height="900" style="" data-src="docker/1609019-pasted-from-clipboard.png"></div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 798.5px; left: 80px; top: 200px;" data-block-id="c51af94b53071678e7a5ab7896c05f7c"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 12;">
+<p>To create a <strong>container </strong>from our new image :</p>
+</div></div>
+<div class="sl-block" data-block-type="code" style="min-width: 30px; min-height: 30px; width: 781px; height: 60px; left: 89px; top: 420px;" data-block-id="fc133ae7abd6908524fca98aa3ad365a"><div class="sl-block-content" style="z-index: 13; font-size: 150%;"><pre class="bash"><code>$ docker run -dit babacooll/lftmysecondimage</code></pre></div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; min-width: 30px; min-height: 30px; width: 600px; left: 32px; top: 585px;" data-block-id="b6df61bbee69ca63cc51e7b09ddfd2bc"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 14;">
+<p>-d : Daemonized</p>
+
+<p>-it : Allocate TTY</p>
+</div></div>
+<div class="sl-block" data-block-type="shape" style="min-width: 4px; min-height: 4px; width: 48px; height: 87px; left: 308px; top: 480px;" data-block-id="db071d97bbfb80d1aaa97c76ed4f89ef"><div class="sl-block-content" data-shape-type="symbol-thin-arrow-up" data-shape-fill-color="#000000" data-shape-stretch="true" style="z-index: 15;"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="100%" height="100%" preserveaspectratio="none" viewbox="4 2 24 28"><g class="shape-element" fill="#000000"><path d="M27.414 12.586l-10-10c-0.781-0.781-2.047-0.781-2.828 0l-10 10c-0.781 0.781-0.781 2.047 0 2.828s2.047 0.781 2.828 0l6.586-6.586v19.172c0 1.105 0.895 2 2 2s2-0.895 2-2v-19.172l6.586 6.586c0.39 0.39 0.902 0.586 1.414 0.586s1.024-0.195 1.414-0.586c0.781-0.781 0.781-2.047 0-2.828z"></path></g></svg></div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; min-width: 30px; min-height: 30px; width: 600px; left: 332px; top: 280px;" data-block-id="25d884835c8b5b88d30b3d4eb36f257d"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 17;">
+<p>Image name</p>
+</div></div>
+<div class="sl-block" data-block-type="shape" style="min-width: 4px; min-height: 4px; width: 48px; height: 88px; left: 608px; top: 326px;" data-block-id="a55926e167b1ce03a1d6ed651e39795e"><div class="sl-block-content" data-shape-type="symbol-thin-arrow-down" data-shape-fill-color="#000000" data-shape-stretch="true" style="z-index: 18;"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="100%" height="100%" preserveaspectratio="none" viewbox="4 2 24 28"><g class="shape-element" fill="#000000"><path d="M4.586 19.414l10 10c0.781 0.781 2.047 0.781 2.828 0l10-10c0.781-0.781 0.781-2.047 0-2.828s-2.047-0.781-2.828 0l-6.586 6.586v-19.172c0-1.105-0.895-2-2-2s-2 0.895-2 2v19.172l-6.586-6.586c-0.391-0.39-0.902-0.586-1.414-0.586s-1.024 0.195-1.414 0.586c-0.781 0.781-0.781 2.047 0 2.828z"></path></g></svg></div></div></section></section><section class="stack"><section><div class="sl-block" data-block-type="text" style="width: 800px; left: 82px; top: 136px; height: auto;" data-block-id="6797a5d0f44adc5f621beea0917931ad"><div class="sl-block-content" data-placeholder-tag="h2" data-placeholder-text="Title Text" style="z-index: 11;" dir="ui">
+<h2>Image : Apache + PHP7</h2>
+</div></div>
+<div class="sl-block" data-block-type="image" style="width: 156.955555555556px; height: 140px; left: 3px; top: 0px;" data-block-id="784dd54e40b078a8f58c1b9170a092c2"><div class="sl-block-content" style="z-index: 12;"><img data-natural-width="1009" data-natural-height="900" style="" data-src="docker/1609019-pasted-from-clipboard.png"></div></div>
+<div class="sl-block" data-block-type="image" data-block-id="7f901f99f3d337ad71e4ab540f343fa6" style="min-width: 30px; min-height: 30px; width: 158.42471042471px; height: 223px; left: 640px; top: 301px;"><div class="sl-block-content" style="z-index: 13;"><img data-natural-width="184" data-natural-height="259" style="" data-src="docker/1609079-php7-transparent.png"></div></div>
+<div class="sl-block" data-block-type="image" data-block-id="e42d3191d6c5e6ce8adea1deb2193c9a" style="min-width: 30px; min-height: 30px; width: 291.092307692308px; height: 238px; left: 95px; top: 301px;"><div class="sl-block-content" style="z-index: 14;"><img style="" data-natural-width="318" data-natural-height="260" data-src="docker/1609080-hernandito-hernando-apachephp-docker-latest-icon.png"></div></div>
+<div class="sl-block" data-block-type="shape" data-block-id="f8d547156c9bdca0309d5763a3168131" style="min-width: 4px; min-height: 4px; width: 123px; height: 180px; left: 419px; top: 330px;"><div class="sl-block-content" data-shape-type="symbol-plus-circle" data-shape-fill-color="#000000" data-shape-stretch="false" style="z-index: 15;"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="100%" height="100%" preserveaspectratio="xMidYMid" viewbox="0 0 32 32"><g class="shape-element" fill="#000000"><path d="M16 0c-8.836 0-16 7.164-16 16s7.164 16 16 16 16-7.164 16-16-7.164-16-16-16zM24 18h-6v6h-4v-6h-6v-4h6v-6h4v6h6v4z"></path></g></svg></div></div></section><section><div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 66px; height: auto;" data-block-id="15fc1c5acf5e93e6cdf600a2f621d139"><div class="sl-block-content" data-placeholder-tag="h2" data-placeholder-text="Title Text" style="z-index: 10;" dir="ui">
+<h2>Dockerfile</h2>
+</div></div>
+<div class="sl-block" data-block-type="image" style="width: 156.955555555556px; height: 140px; left: 3px; top: 0px;" data-block-id="22112196eaac06aaa7e23a3b715611cb"><div class="sl-block-content" style="z-index: 11;"><img data-natural-width="1009" data-natural-height="900" style="" data-src="docker/1609019-pasted-from-clipboard.png"></div></div>
+<div class="sl-block" data-block-type="code" data-block-id="501755e35c0c059fc7ab572105c34fd3" style="min-width: 30px; min-height: 30px; width: 761px; height: 462px; left: 100px; top: 210px;"><div class="sl-block-content" style="z-index: 12; font-size: 76%; border-style: solid; border-width: 1px;"><pre><code># use the latest Ubuntu base image
+# adapted from https://registry.hub.docker.com/u/coderstephen/php7 for additional needs
+FROM ubuntu:14.04
+MAINTAINER LFT &lt;lft@quanta.lu&gt;
+
+# install packages for Apache and for compiling PHP
+RUN apt-get update &amp;&amp; apt-get install -y \
+    apache2-mpm-prefork \
+    apache2-prefork-dev \
+    aufs-tools \
+    automake \
+    bison \
+    btrfs-tools \
+    build-essential \
+    curl \
+    git \
+    libbz2-dev \
+    libcurl4-openssl-dev \
+    libmcrypt-dev \
+    libxml2-dev \
+    re2c
+
+# get the latest PHP source from master branch
+RUN git clone --depth=1 https://github.com/php/php-src.git /usr/local/src/php
+
+# we're going to be working out of the PHP src directory for the compile steps
+WORKDIR /usr/local/src/php
+ENV PHP_DIR /usr/local/php
+
+# configure the build
+RUN ./buildconf &amp;&amp; ./configure \
+    --prefix=$PHP_DIR \
+    --with-config-file-path=$PHP_DIR \
+    --with-config-file-scan-dir=$PHP_DIR/conf.d \
+    --with-apxs2=/usr/bin/apxs2 \
+    --with-libdir=/lib/x86_64-linux-gnu \
+    --enable-bcmath \
+    --with-bz2 \
+    --enable-calendar \
+    --with-curl \
+    --enable-exif \
+    --enable-ftp \
+    --with-ldap \
+    --enable-mbstring \
+    --enable-mbregex \
+    --with-mcrypt \
+    --with-mysqli=mysqlnd \
+    --with-openssl \
+    --enable-pcntl \
+    --without-pear \
+    --enable-pdo \
+    --with-pdo-mysql=mysqlnd \
+    --enable-sockets \
+    --with-zip \
+    --with-zlib
+
+# compile and install
+RUN make &amp;&amp; make install
+
+ENV PATH=$PATH:/usr/local/php/bin
+
+# set up Apache environment variables
+ENV APACHE_RUN_USER=www-data \
+    APACHE_RUN_GROUP=www-data \
+    APACHE_LOG_DIR=/var/log/apache2 \
+    APACHE_LOCK_DIR=/var/lock/apache2 \
+    APACHE_PID_FILE=/var/run/apache2.pid
+
+# Remove default site
+RUN rm -f sites-enabled/000-default.conf
+
+# Enable additional configs and mods
+ENV HTTPD_PREFIX /etc/apache2
+RUN a2dismod mpm_event &amp;&amp; a2enmod mpm_prefork
+RUN ln -s $HTTPD_PREFIX/mods-available/expires.load $HTTPD_PREFIX/mods-enabled/expires.load \
+    &amp;&amp; ln -s $HTTPD_PREFIX/mods-available/headers.load $HTTPD_PREFIX/mods-enabled/headers.load \
+    &amp;&amp; ln -s $HTTPD_PREFIX/mods-available/rewrite.load $HTTPD_PREFIX/mods-enabled/rewrite.load
+
+EXPOSE 80
+
+# By default, simply start apache.
+CMD /usr/sbin/apache2ctl -D FOREGROUND</code></pre></div></div>
+<div class="sl-block" data-block-type="image" style="min-width: 30px; min-height: 30px; width: 97.8461538461539px; height: 80px; left: 782px; top: 0px;" data-block-id="ba180fbee26d20792e7d306cc0c882dd"><div class="sl-block-content" style="z-index: 14;"><img style="" data-natural-width="318" data-natural-height="260" data-src="docker/1609080-hernandito-hernando-apachephp-docker-latest-icon.png"></div></div>
+<div class="sl-block" data-block-type="image" style="min-width: 30px; min-height: 30px; width: 44.0463320463321px; height: 62px; left: 889px; top: 8px;" data-block-id="66ac56ee5c374b356fdf8df3d596b07a"><div class="sl-block-content" style="z-index: 15;"><img data-natural-width="184" data-natural-height="259" style="" data-src="docker/1609079-php7-transparent.png"></div></div></section><section><div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 66px; height: auto;" data-block-id="27f6cc5a8d664df3479035e9cc3348fd"><div class="sl-block-content" data-placeholder-tag="h2" data-placeholder-text="Title Text" style="z-index: 10;" dir="ui">
+<h2>Build the image</h2>
+</div></div>
+<div class="sl-block" data-block-type="image" style="width: 156.955555555556px; height: 140px; left: 3px; top: 0px;" data-block-id="b932e2fb57870c59ab8a57a7338f9c44"><div class="sl-block-content" style="z-index: 11;"><img data-natural-width="1009" data-natural-height="900" style="" data-src="docker/1609019-pasted-from-clipboard.png"></div></div>
+<div class="sl-block" data-block-type="code" data-block-id="6daeea6f092e1d9c5cda3246a5e983f9" style="min-width: 30px; min-height: 30px; width: 691px; height: 70px; left: 135px; top: 350px;"><div class="sl-block-content" style="z-index: 12; border: 1px solid rgb(0, 0, 0); font-size: 147%;"><pre class="bash"><code>$ docker build -t babacooll/lftapachephp7 .</code></pre></div></div>
+<div class="sl-block" data-block-type="shape" data-block-id="f445198e08e971ed209c3fb312998c9a" style="min-width: 4px; min-height: 4px; width: 48px; height: 87px; left: 536px; top: 420px;"><div class="sl-block-content" data-shape-type="symbol-thin-arrow-up" data-shape-fill-color="#000000" data-shape-stretch="true" style="z-index: 13;"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="100%" height="100%" preserveaspectratio="none" viewbox="4 2 24 28"><g class="shape-element" fill="#000000"><path d="M27.414 12.586l-10-10c-0.781-0.781-2.047-0.781-2.828 0l-10 10c-0.781 0.781-0.781 2.047 0 2.828s2.047 0.781 2.828 0l6.586-6.586v19.172c0 1.105 0.895 2 2 2s2-0.895 2-2v-19.172l6.586 6.586c0.39 0.39 0.902 0.586 1.414 0.586s1.024-0.195 1.414-0.586c0.781-0.781 0.781-2.047 0-2.828z"></path></g></svg></div></div>
+<div class="sl-block" data-block-type="text" data-block-id="93d968dee35f1956c04360207df00a16" style="height: auto; min-width: 30px; min-height: 30px; width: 600px; left: 260px; top: 520px;"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 14;">
+<p>Image name</p>
+</div></div>
+<div class="sl-block" data-block-type="text" data-block-id="d23eb7a0283f45bafae3745421e649b2" style="height: auto; min-width: 30px; min-height: 30px; width: 300px; left: 608px; top: 199px;"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 16;">
+<p>Dockerfile directory</p>
+</div></div>
+<div class="sl-block" data-block-type="shape" data-block-id="29baf6d281bb1c77f01ec58de73762ce" style="min-width: 4px; min-height: 4px; width: 48px; height: 88px; left: 734px; top: 249px;"><div class="sl-block-content" data-shape-type="symbol-thin-arrow-down" data-shape-fill-color="#000000" data-shape-stretch="true" style="z-index: 17;"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="100%" height="100%" preserveaspectratio="none" viewbox="4 2 24 28"><g class="shape-element" fill="#000000"><path d="M4.586 19.414l10 10c0.781 0.781 2.047 0.781 2.828 0l10-10c0.781-0.781 0.781-2.047 0-2.828s-2.047-0.781-2.828 0l-6.586 6.586v-19.172c0-1.105-0.895-2-2-2s-2 0.895-2 2v19.172l-6.586-6.586c-0.391-0.39-0.902-0.586-1.414-0.586s-1.024 0.195-1.414 0.586c-0.781 0.781-0.781 2.047 0 2.828z"></path></g></svg></div></div>
+<div class="sl-block" data-block-type="image" style="min-width: 30px; min-height: 30px; width: 97.8461538461539px; height: 80px; left: 782px; top: 1px;" data-block-id="d49068b2407dcf5adb1ccfe1c4d40d06"><div class="sl-block-content" style="z-index: 18;"><img style="" data-natural-width="318" data-natural-height="260" data-src="docker/1609080-hernandito-hernando-apachephp-docker-latest-icon.png"></div></div>
+<div class="sl-block" data-block-type="image" style="min-width: 30px; min-height: 30px; width: 44.0463320463321px; height: 62px; left: 889px; top: 9px;" data-block-id="507bd6e1dcbf9108e0ceadea3d8e5f88"><div class="sl-block-content" style="z-index: 19;"><img data-natural-width="184" data-natural-height="259" style="" data-src="docker/1609079-php7-transparent.png"></div></div>
+<div class="sl-block" data-block-type="image" style="min-width: 30px; min-height: 30px; width: 97.8461538461539px; height: 80px; left: 782px; top: 0px;" data-block-id="147c74124b153f445f204237c8c5da8e"><div class="sl-block-content" style="z-index: 20;"><img style="" data-natural-width="318" data-natural-height="260" data-src="docker/1609080-hernandito-hernando-apachephp-docker-latest-icon.png"></div></div>
+<div class="sl-block" data-block-type="image" style="min-width: 30px; min-height: 30px; width: 44.0463320463321px; height: 62px; left: 889px; top: 7px;" data-block-id="77d11d5b9350c7d85f99116547296b07"><div class="sl-block-content" style="z-index: 21;"><img data-natural-width="184" data-natural-height="259" style="" data-src="docker/1609079-php7-transparent.png"></div></div></section><section><div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 66px; height: auto;" data-block-id="9e516fba941721263528e1ded57501be"><div class="sl-block-content" data-placeholder-tag="h2" data-placeholder-text="Title Text" style="z-index: 10;" dir="ui">
+<h2>Run a Container</h2>
+</div></div>
+<div class="sl-block" data-block-type="image" style="width: 156.955555555556px; height: 140px; left: 3px; top: 0px;" data-block-id="5d54c7fe8c6d8700ef8adc6dcb72b0a4"><div class="sl-block-content" style="z-index: 11;"><img data-natural-width="1009" data-natural-height="900" style="" data-src="docker/1609019-pasted-from-clipboard.png"></div></div>
+<div class="sl-block" data-block-type="code" style="width: 665px; height: 63px; left: 148px; top: 364px;" data-block-id="cd87bf6ecb007d2c9ca0c154a387121f"><div class="sl-block-content" style="z-index: 12; border-style: solid; border-width: 1px; font-size: 147%;"><pre class="bash"><code>$ docker run -dit babacooll/lftapachephp7</code></pre></div></div>
+<div class="sl-block" data-block-type="text" data-block-id="cf236ed6f7dad516d23073eb357f3a14" style="height: auto; min-width: 30px; min-height: 30px; width: 600px; left: 93px; top: 544px;"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 13;">
+<p>-d : Daemonized</p>
+
+<p>-it : Allocate TTY</p>
+</div></div>
+<div class="sl-block" data-block-type="shape" style="min-width: 4px; min-height: 4px; width: 48px; height: 87px; left: 369px; top: 439px;" data-block-id="019efa15d120a1d69dcbbf4a09c482f8"><div class="sl-block-content" data-shape-type="symbol-thin-arrow-up" data-shape-fill-color="#000000" data-shape-stretch="true" style="z-index: 14;"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="100%" height="100%" preserveaspectratio="none" viewbox="4 2 24 28"><g class="shape-element" fill="#000000"><path d="M27.414 12.586l-10-10c-0.781-0.781-2.047-0.781-2.828 0l-10 10c-0.781 0.781-0.781 2.047 0 2.828s2.047 0.781 2.828 0l6.586-6.586v19.172c0 1.105 0.895 2 2 2s2-0.895 2-2v-19.172l6.586 6.586c0.39 0.39 0.902 0.586 1.414 0.586s1.024-0.195 1.414-0.586c0.781-0.781 0.781-2.047 0-2.828z"></path></g></svg></div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; min-width: 30px; min-height: 30px; width: 600px; left: 260px; top: 216px;" data-block-id="9671379b315ccd90b92f301567812dbb"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 16;">
+<p>Image name</p>
+</div></div>
+<div class="sl-block" data-block-type="shape" style="min-width: 4px; min-height: 4px; width: 48px; height: 88px; left: 536px; top: 262px;" data-block-id="cb97498fed763f6f1bb565ee20f07386"><div class="sl-block-content" data-shape-type="symbol-thin-arrow-down" data-shape-fill-color="#000000" data-shape-stretch="true" style="z-index: 17;"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="100%" height="100%" preserveaspectratio="none" viewbox="4 2 24 28"><g class="shape-element" fill="#000000"><path d="M4.586 19.414l10 10c0.781 0.781 2.047 0.781 2.828 0l10-10c0.781-0.781 0.781-2.047 0-2.828s-2.047-0.781-2.828 0l-6.586 6.586v-19.172c0-1.105-0.895-2-2-2s-2 0.895-2 2v19.172l-6.586-6.586c-0.391-0.39-0.902-0.586-1.414-0.586s-1.024 0.195-1.414 0.586c-0.781 0.781-0.781 2.047 0 2.828z"></path></g></svg></div></div>
+<div class="sl-block" data-block-type="image" style="min-width: 30px; min-height: 30px; width: 97.8461538461539px; height: 80px; left: 782px; top: 0px;" data-block-id="9991b085a2741422fd5d69fcc0bcfb4d"><div class="sl-block-content" style="z-index: 18;"><img style="" data-natural-width="318" data-natural-height="260" data-src="docker/1609080-hernandito-hernando-apachephp-docker-latest-icon.png"></div></div>
+<div class="sl-block" data-block-type="image" style="min-width: 30px; min-height: 30px; width: 44.0463320463321px; height: 62px; left: 889px; top: 8px;" data-block-id="9fe40f47dd002757a1ecf9d833bf584d"><div class="sl-block-content" style="z-index: 19;"><img data-natural-width="184" data-natural-height="259" style="" data-src="docker/1609079-php7-transparent.png"></div></div></section><section><div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 66px; height: auto;" data-block-id="4b8db4b54a27e37a7b9a60535ac4aff7"><div class="sl-block-content" data-placeholder-tag="h2" data-placeholder-text="Title Text" style="z-index: 10;" dir="ui">
+<h2>Let's check Apache</h2>
+</div></div>
+<div class="sl-block" data-block-type="image" style="width: 156.955555555556px; height: 140px; left: 3px; top: 0px;" data-block-id="9d312788ee5338b9a5ceddc16fa7dc62"><div class="sl-block-content" style="z-index: 11;"><img data-natural-width="1009" data-natural-height="900" style="" data-src="docker/1609019-pasted-from-clipboard.png"></div></div>
+<div class="sl-block" data-block-type="code" data-block-id="54c2413a6f27a394f263f61ce34186eb" style="min-width: 30px; min-height: 30px; width: 377px; height: 75px; left: 292px; top: 298px;"><div class="sl-block-content" style="z-index: 12; font-size: 200%; border-style: solid; border-width: 1px;"><pre class="bash"><code>$ boot2docker ip</code></pre></div></div>
+<div class="sl-block" data-block-type="text" data-block-id="caaf27da9c1a7d8c229205ed2d2acae5" style="height: auto; min-width: 30px; min-height: 30px; width: 600px; left: 181px; top: 210px;"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 13;">
+<p>To know the <strong>IP</strong> of Docker Host :</p>
+</div></div>
+<div class="sl-block" data-block-type="text" data-block-id="1d2529dfffd92acbc0978ff37779e30a" style="height: auto; min-width: 30px; min-height: 30px; width: 600px; left: 180px; top: 481px;"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 14;">
+<p><a href="http://192.168.59.103:80" target="_blank">http://192.168.59.103:80</a></p>
+</div></div>
+<div class="sl-block" data-block-type="image" style="min-width: 30px; min-height: 30px; width: 97.8461538461539px; height: 80px; left: 782px; top: 0px;" data-block-id="90fde0321f2783ba0ab4395092c4f7cd"><div class="sl-block-content" style="z-index: 16;"><img style="" data-natural-width="318" data-natural-height="260" data-src="docker/1609080-hernandito-hernando-apachephp-docker-latest-icon.png"></div></div>
+<div class="sl-block" data-block-type="image" style="min-width: 30px; min-height: 30px; width: 44.0463320463321px; height: 62px; left: 889px; top: 8px;" data-block-id="99c0224409168224ba3d16a2b5b78945"><div class="sl-block-content" style="z-index: 17;"><img data-natural-width="184" data-natural-height="259" style="" data-src="docker/1609079-php7-transparent.png"></div></div></section><section><div class="sl-block" data-block-type="text" style="width: 800px; left: 80px; top: 66px; height: auto;" data-block-id="5978312ea4cae2639672a46433ad0a09"><div class="sl-block-content" data-placeholder-tag="h2" data-placeholder-text="Title Text" style="z-index: 10;" dir="ui">
+<h2>Open ports</h2>
+</div></div>
+<div class="sl-block" data-block-type="image" style="width: 156.955555555556px; height: 140px; left: 3px; top: 0px;" data-block-id="b193f3f6ac8bfdcf218625bd06d73d78"><div class="sl-block-content" style="z-index: 11;"><img data-natural-width="1009" data-natural-height="900" style="" data-src="docker/1609019-pasted-from-clipboard.png"></div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 600px; left: 181px; top: 210px;" data-block-id="cada6a8a1acb856f6b13faf81b5e1a89"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 12;">
+<p>To open a port on the Container :</p>
+</div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 600px; left: 173px; top: 471px;" data-block-id="e34c9b7559b95b1cb7178d27c757e4be"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 13;">
+<p><a href="http://192.168.59.103:80" target="_blank">http://192.168.59.103:80</a></p>
+</div></div>
+<div class="sl-block" data-block-type="code" style="width: 815px; height: 71px; left: 74px; top: 321px;" data-block-id="a15e926c00cc5c81321175c3fba0f13f"><div class="sl-block-content" style="z-index: 14; border-style: solid; border-width: 1px; font-size: 147%;"><pre class="bash"><code>$ docker run -dit -p 80:80 babacooll/lftapachephp7</code></pre></div></div>
+<div class="sl-block" data-block-type="image" style="min-width: 30px; min-height: 30px; width: 97.8461538461539px; height: 80px; left: 782px; top: 0px;" data-block-id="7b0d0a54a73e218ae565347d203315e7"><div class="sl-block-content" style="z-index: 16;"><img style="" data-natural-width="318" data-natural-height="260" data-src="docker/1609080-hernandito-hernando-apachephp-docker-latest-icon.png"></div></div>
+<div class="sl-block" data-block-type="image" style="min-width: 30px; min-height: 30px; width: 44.0463320463321px; height: 62px; left: 889px; top: 8px;" data-block-id="b10b73f44b6409961f4cb3eda3b0b4b3"><div class="sl-block-content" style="z-index: 17;"><img data-natural-width="184" data-natural-height="259" style="" data-src="docker/1609079-php7-transparent.png"></div></div></section><section><div class="sl-block" data-block-type="text" style="width: 800px; left: 123px; top: 66px; height: auto;" data-block-id="a45bc5e77fb2b9d2af63d57f4a464a40"><div class="sl-block-content" data-placeholder-tag="h2" data-placeholder-text="Title Text" style="z-index: 10;" dir="ui">
+<h2>How to add PHP code ?</h2>
+</div></div>
+<div class="sl-block" data-block-type="image" style="width: 156.955555555556px; height: 140px; left: 3px; top: 0px;" data-block-id="32b408e943b19d387f354f041cc93419"><div class="sl-block-content" style="z-index: 11;"><img data-natural-width="1009" data-natural-height="900" style="" data-src="docker/1609019-pasted-from-clipboard.png"></div></div>
+<div class="sl-block" data-block-type="text" data-block-id="6e95c5d3e38245364bd3e4c799939cc3" style="height: auto; min-width: 30px; min-height: 30px; width: 600px; left: 180px; top: 202px;"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 12; font-size: 200%;">
+<p>Solutions ?</p>
+</div></div>
+<div class="sl-block" data-block-type="text" data-block-id="f4cafecd0f038b90c9db9ae8813546fb" style="height: auto; min-width: 30px; min-height: 30px; width: 600px; left: 180px; top: 369px;"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 13;">
+<ul>
+	<li>Open Container and work in it ?</li>
+</ul>
+
+<p> </p>
+
+<ul>
+	<li>Open Container in FTP ?</li>
+</ul>
+</div></div>
+<div class="sl-block" data-block-type="image" style="min-width: 30px; min-height: 30px; width: 97.8461538461539px; height: 80px; left: 782px; top: 0px;" data-block-id="1f4ab93348e3399c7ba940d60cc84b85"><div class="sl-block-content" style="z-index: 15;"><img style="" data-natural-width="318" data-natural-height="260" data-src="docker/1609080-hernandito-hernando-apachephp-docker-latest-icon.png"></div></div>
+<div class="sl-block" data-block-type="image" style="min-width: 30px; min-height: 30px; width: 44.0463320463321px; height: 62px; left: 889px; top: 8px;" data-block-id="dce340f847ce4710d77df0985212c091"><div class="sl-block-content" style="z-index: 16;"><img data-natural-width="184" data-natural-height="259" style="" data-src="docker/1609079-php7-transparent.png"></div></div></section><section><div class="sl-block" data-block-type="text" style="width: 800px; left: 123px; top: 66px; height: auto;" data-block-id="449a22f0eb33500ed4e874b40e318a02"><div class="sl-block-content" data-placeholder-tag="h2" data-placeholder-text="Title Text" style="z-index: 10;" dir="ui">
+<h2>How to add PHP code ?</h2>
+</div></div>
+<div class="sl-block" data-block-type="image" style="width: 156.955555555556px; height: 140px; left: 3px; top: 0px;" data-block-id="2cef268a1983e9dbdd88a15db348f6bc"><div class="sl-block-content" style="z-index: 11;"><img data-natural-width="1009" data-natural-height="900" style="" data-src="docker/1609019-pasted-from-clipboard.png"></div></div>
+<div class="sl-block" data-block-type="image" style="width: 500px; height: 350px; left: 230px; top: 221px;" data-block-id="454af83810aba31aaff0aa5fe47efc30"><div class="sl-block-content" style="z-index: 12; border-style: solid; border-width: 1px;"><img style="" data-natural-width="500" data-natural-height="350" data-src="docker/1609150-giphy.gif"></div></div>
+<div class="sl-block" data-block-type="image" style="min-width: 30px; min-height: 30px; width: 97.8461538461539px; height: 80px; left: 782px; top: 0px;" data-block-id="685af3b822e1b0512b7c14735ab163b6"><div class="sl-block-content" style="z-index: 14;"><img style="" data-natural-width="318" data-natural-height="260" data-src="docker/1609080-hernandito-hernando-apachephp-docker-latest-icon.png"></div></div>
+<div class="sl-block" data-block-type="image" style="min-width: 30px; min-height: 30px; width: 44.0463320463321px; height: 62px; left: 889px; top: 8px;" data-block-id="21af57aec0db9e8490968b5918091366"><div class="sl-block-content" style="z-index: 15;"><img data-natural-width="184" data-natural-height="259" style="" data-src="docker/1609079-php7-transparent.png"></div></div></section><section><div class="sl-block" data-block-type="text" style="width: 800px; left: 123px; top: 66px; height: auto;" data-block-id="266868971b2bfd0280aa3f4097af16c8"><div class="sl-block-content" data-placeholder-tag="h2" data-placeholder-text="Title Text" style="z-index: 10;" dir="ui">
+<h2>How to add PHP code ?</h2>
+</div></div>
+<div class="sl-block" data-block-type="image" style="width: 156.955555555556px; height: 140px; left: 3px; top: 0px;" data-block-id="e40781e1d7673ae46daeb1fc0fbf301d"><div class="sl-block-content" style="z-index: 11;"><img data-natural-width="1009" data-natural-height="900" style="" data-src="docker/1609019-pasted-from-clipboard.png"></div></div>
+<div class="sl-block" data-block-type="text" data-block-id="ac82e87ee965ab86f7b99b6c1a1a337e" style="height: auto; min-width: 30px; min-height: 30px; width: 929px; left: 12px; top: 179px;"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 12;">
+<p>Let's build a new Image <em>babacooll/lftapachephp7project</em> </p>
+
+<p>extending <em>babacooll/lftapachephp7</em></p>
+</div></div>
+<div class="sl-block" data-block-type="text" data-block-id="eb517592ee50a1d6aa85f36d2be0bf6c" style="height: auto; min-width: 30px; min-height: 30px; width: 600px; left: 180px; top: 287px;"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 13;">
+<p><strong>Dockerfile</strong></p>
+</div></div>
+<div class="sl-block" data-block-type="code" data-block-id="c7a9a2c0852586d91ed1f72864e131b3" style="min-width: 30px; min-height: 30px; width: 650px; height: 337px; left: 155px; top: 351px;"><div class="sl-block-content" style="z-index: 14; border-style: solid; border-width: 1px;"><pre><code>FROM babacooll/lftapachephp7
+MAINTAINER LFT &lt;lft@quanta.lu&gt;
+
+ENV REFRESHED_AT 2015-05-11
+
+COPY vhost.conf /etc/apache2/sites-enabled/
+
+RUN mkdir -p /var/www/lft
+VOLUME ["/var/www/lft"]
+
+COPY application/ /var/www/lft
+
+WORKDIR /var/www/lft
+EXPOSE 80
+CMD ["apache2ctl", "-D", "FOREGROUND"]</code></pre></div></div>
+<div class="sl-block" data-block-type="image" style="min-width: 30px; min-height: 30px; width: 97.8461538461539px; height: 80px; left: 782px; top: 0px;" data-block-id="e10b4641d0dc11891884092d4712f199"><div class="sl-block-content" style="z-index: 16;"><img style="" data-natural-width="318" data-natural-height="260" data-src="docker/1609080-hernandito-hernando-apachephp-docker-latest-icon.png"></div></div>
+<div class="sl-block" data-block-type="image" style="min-width: 30px; min-height: 30px; width: 44.0463320463321px; height: 62px; left: 889px; top: 8px;" data-block-id="27009651132151f6b77488106ffc3b92"><div class="sl-block-content" style="z-index: 17;"><img data-natural-width="184" data-natural-height="259" style="" data-src="docker/1609079-php7-transparent.png"></div></div></section><section><div class="sl-block" data-block-type="text" style="width: 800px; left: 123px; top: 66px; height: auto;" data-block-id="6faf0642aa9b663df1315dd37c0dc409"><div class="sl-block-content" data-placeholder-tag="h2" data-placeholder-text="Title Text" style="z-index: 10;" dir="ui">
+<h2>How to add PHP code ?</h2>
+</div></div>
+<div class="sl-block" data-block-type="image" style="width: 156.955555555556px; height: 140px; left: 3px; top: 0px;" data-block-id="321d6abe7e79f779f8e26e0b9f47a1f8"><div class="sl-block-content" style="z-index: 11;"><img data-natural-width="1009" data-natural-height="900" style="" data-src="docker/1609019-pasted-from-clipboard.png"></div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 600px; left: 187px; top: 191px;" data-block-id="648ea183112ad5b962ec0e0ac31df7be"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 12;">
+<p><strong>Vhost</strong></p>
+</div></div>
+<div class="sl-block" data-block-type="code" style="width: 650px; height: 445px; left: 155px; top: 243px;" data-block-id="e8d5e6ef63b70b9cc5fddbd94d2d45e9"><div class="sl-block-content" style="z-index: 13; border-style: solid; border-width: 1px;"><pre><code>&lt;VirtualHost *:80&gt;
+  ServerName lft.dev
+  DocumentRoot /var/www/lft
+  #RewriteEngine On
+  DirectoryIndex index.php
+
+  &lt;Directory /var/www/lft&gt;
+    Options FollowSymLinks
+    AllowOverride All
+    Require all granted
+  &lt;/Directory&gt;
+
+  LogLevel info
+  ErrorLog /var/log/apache2/myapp-error.log
+  CustomLog /var/log/apache2/myapp-access.log combined
+
+&lt;/VirtualHost&gt;
+
+&lt;FilesMatch \.php$&gt;
+    SetHandler application/x-httpd-php
+&lt;/FilesMatch&gt;</code></pre></div></div>
+<div class="sl-block" data-block-type="image" style="min-width: 30px; min-height: 30px; width: 97.8461538461539px; height: 80px; left: 782px; top: 0px;" data-block-id="135359f215779c66278de2c0ed2565d0"><div class="sl-block-content" style="z-index: 15;"><img style="" data-natural-width="318" data-natural-height="260" data-src="docker/1609080-hernandito-hernando-apachephp-docker-latest-icon.png"></div></div>
+<div class="sl-block" data-block-type="image" style="min-width: 30px; min-height: 30px; width: 44.0463320463321px; height: 62px; left: 889px; top: 8px;" data-block-id="80e0415036a936b508632b717dba1088"><div class="sl-block-content" style="z-index: 16;"><img data-natural-width="184" data-natural-height="259" style="" data-src="docker/1609079-php7-transparent.png"></div></div></section><section><div class="sl-block" data-block-type="text" style="width: 800px; left: 123px; top: 66px; height: auto;" data-block-id="dd240ab658a5bc2a16454f1a30b4ed50"><div class="sl-block-content" data-placeholder-tag="h2" data-placeholder-text="Title Text" style="z-index: 10;" dir="ui">
+<h2>How to add PHP code ?</h2>
+</div></div>
+<div class="sl-block" data-block-type="image" style="width: 156.955555555556px; height: 140px; left: 3px; top: 0px;" data-block-id="6f57c8ab3a841284b85b06748bfafdeb"><div class="sl-block-content" style="z-index: 11;"><img data-natural-width="1009" data-natural-height="900" style="" data-src="docker/1609019-pasted-from-clipboard.png"></div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 627px; left: 167px; top: 224px;" data-block-id="2947aa770353bcec575132e7dd94935e"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 12;">
+<p>Let's build our image :</p>
+</div></div>
+<div class="sl-block" data-block-type="image" style="min-width: 30px; min-height: 30px; width: 97.8461538461539px; height: 80px; left: 782px; top: 0px;" data-block-id="1de67bce73c0d92d370b3e22f19801fb"><div class="sl-block-content" style="z-index: 13;"><img style="" data-natural-width="318" data-natural-height="260" data-src="docker/1609080-hernandito-hernando-apachephp-docker-latest-icon.png"></div></div>
+<div class="sl-block" data-block-type="image" style="min-width: 30px; min-height: 30px; width: 44.0463320463321px; height: 62px; left: 889px; top: 8px;" data-block-id="d7e243fff66a67189f55709a8e979a24"><div class="sl-block-content" style="z-index: 14;"><img data-natural-width="184" data-natural-height="259" style="" data-src="docker/1609079-php7-transparent.png"></div></div>
+<div class="sl-block" data-block-type="code" data-block-id="9b19263811b7aab93d4e3ea8b6cbfe81" style="min-width: 30px; min-height: 30px; width: 730px; height: 76px; left: 117px; top: 318px;"><div class="sl-block-content" style="z-index: 15; font-size: 150%; border-style: solid; border-width: 1px;"><pre class="bash"><code>$ docker build -t lft/lftapachephp7project .</code></pre></div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 627px; left: 168px; top: 420px;" data-block-id="f13418682a3a8be8a4175c523a26216e"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 17;">
+<p>Let's run a container from this image :</p>
+</div></div>
+<div class="sl-block" data-block-type="code" style="min-width: 30px; min-height: 30px; width: 881px; height: 74px; left: 42px; top: 513px;" data-block-id="db89b22f8bce77b9537f5eed82dff6a7"><div class="sl-block-content" style="z-index: 18; font-size: 150%; border-style: solid; border-width: 1px;"><pre class="bash"><code>$ docker run -dit -p 80:80 babacooll/lftapachephp7project</code></pre></div></div></section><section><div class="sl-block" data-block-type="text" style="width: 800px; left: 123px; top: 66px; height: auto;" data-block-id="53b8a6fd96acd9048d69937b363968b7"><div class="sl-block-content" data-placeholder-tag="h2" data-placeholder-text="Title Text" style="z-index: 10;" dir="ui">
+<h2>How to add PHP code ?</h2>
+</div></div>
+<div class="sl-block" data-block-type="image" style="width: 156.955555555556px; height: 140px; left: 3px; top: 0px;" data-block-id="90ccca55e2797f2ea7820884b77af81f"><div class="sl-block-content" style="z-index: 11;"><img data-natural-width="1009" data-natural-height="900" style="" data-src="docker/1609019-pasted-from-clipboard.png"></div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 627px; left: 167px; top: 224px;" data-block-id="56b4c4952882db45d82a4c03eae5d6b2"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 12;">
+<p>Add <strong>lft.dev </strong>to local hosts</p>
+
+<p> </p>
+
+<p><a href="http://lft.dev:80" target="_blank">http://lft.dev:80</a></p>
+</div></div>
+<div class="sl-block" data-block-type="image" style="width: 97.8461538461539px; height: 80px; left: 782px; top: 0px;" data-block-id="fefddbfaf4cf34824ccdc681ea8ea00f"><div class="sl-block-content" style="z-index: 14;"><img style="" data-natural-width="318" data-natural-height="260" data-src="docker/1609080-hernandito-hernando-apachephp-docker-latest-icon.png"></div></div>
+<div class="sl-block" data-block-type="image" style="width: 44.0463320463321px; height: 62px; left: 889px; top: 8px;" data-block-id="f3d2e65a31bc10716ea74b27fca946d5"><div class="sl-block-content" style="z-index: 15;"><img data-natural-width="184" data-natural-height="259" style="" data-src="docker/1609079-php7-transparent.png"></div></div></section><section><div class="sl-block" data-block-type="text" style="width: 800px; left: 123px; top: 66px; height: auto;" data-block-id="318f5e84829b581e6b9238a3971bfcd5"><div class="sl-block-content" data-placeholder-tag="h2" data-placeholder-text="Title Text" style="z-index: 10;" dir="ui">
+<h2>How to add PHP code ?</h2>
+</div></div>
+<div class="sl-block" data-block-type="image" style="width: 156.955555555556px; height: 140px; left: 3px; top: 0px;" data-block-id="329381881b3598830e4c1bcf6d9a204c"><div class="sl-block-content" style="z-index: 11;"><img data-natural-width="1009" data-natural-height="900" style="" data-src="docker/1609019-pasted-from-clipboard.png"></div></div>
+<div class="sl-block" data-block-type="text" data-block-id="40a99b83cafe93b12650b8a754f3f920" style="height: auto; min-width: 30px; min-height: 30px; width: 640px; left: 160px; top: 312px;"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 12;">
+<p>Our image <em>contains </em>now :</p>
+
+<p> </p>
+
+<ul>
+	<li>Our Project (<em>./application</em>)</li>
+	<li>An Apache vhost (<em>vhost.conf</em>)</li>
+	<li>Apache + PHP7 (<em>babacooll/lftapachephp7)</em>
+</li>
+</ul>
+</div></div>
+<div class="sl-block" data-block-type="image" style="min-width: 30px; min-height: 30px; width: 97.8461538461539px; height: 80px; left: 782px; top: 0px;" data-block-id="e5ddc82b765cb81a35a3d3ce6e4b6cd8"><div class="sl-block-content" style="z-index: 14;"><img style="" data-natural-width="318" data-natural-height="260" data-src="docker/1609080-hernandito-hernando-apachephp-docker-latest-icon.png"></div></div>
+<div class="sl-block" data-block-type="image" style="min-width: 30px; min-height: 30px; width: 44.0463320463321px; height: 62px; left: 889px; top: 8px;" data-block-id="33eb21c7bef28a5714701e3793fa9f71"><div class="sl-block-content" style="z-index: 15;"><img data-natural-width="184" data-natural-height="259" style="" data-src="docker/1609079-php7-transparent.png"></div></div></section><section><div class="sl-block" data-block-type="text" style="width: 800px; left: 123px; top: 66px; height: auto;" data-block-id="56f67469c8682c4acd7fef779099bf6c"><div class="sl-block-content" data-placeholder-tag="h2" data-placeholder-text="Title Text" style="z-index: 10;" dir="ui">
+<h2>How to add PHP code ?</h2>
+</div></div>
+<div class="sl-block" data-block-type="image" style="width: 156.955555555556px; height: 140px; left: 3px; top: 0px;" data-block-id="ce71a321f0014b60ae8e761d7bd4329a"><div class="sl-block-content" style="z-index: 11;"><img data-natural-width="1009" data-natural-height="900" style="" data-src="docker/1609019-pasted-from-clipboard.png"></div></div>
+<div class="sl-block" data-block-type="image" style="width: 443px; height: 338.764705882353px; left: 259px; top: 240px;" data-block-id="ee84676907100b448ff33f131d7f978b"><div class="sl-block-content" style="z-index: 12; border-style: solid; border-width: 1px;"><img style="" data-natural-width="306" data-natural-height="234" data-src="docker/1609177-giphy__1_.gif"></div></div>
+<div class="sl-block" data-block-type="image" style="min-width: 30px; min-height: 30px; width: 97.8461538461539px; height: 80px; left: 782px; top: 0px;" data-block-id="0bb4ffeb5ede13512730d02c29088e16"><div class="sl-block-content" style="z-index: 14;"><img style="" data-natural-width="318" data-natural-height="260" data-src="docker/1609080-hernandito-hernando-apachephp-docker-latest-icon.png"></div></div>
+<div class="sl-block" data-block-type="image" style="min-width: 30px; min-height: 30px; width: 44.0463320463321px; height: 62px; left: 889px; top: 8px;" data-block-id="64f049169c481d8e6861b6d9ce23ce23"><div class="sl-block-content" style="z-index: 15;"><img data-natural-width="184" data-natural-height="259" style="" data-src="docker/1609079-php7-transparent.png"></div></div></section><section><div class="sl-block" data-block-type="text" style="width: 800px; left: 123px; top: 66px; height: auto;" data-block-id="1d7f8756da61a7e2c8574e0b98ee0312"><div class="sl-block-content" data-placeholder-tag="h2" data-placeholder-text="Title Text" style="z-index: 10;" dir="ui">
+<h2>How to add PHP code ?</h2>
+</div></div>
+<div class="sl-block" data-block-type="image" style="width: 156.955555555556px; height: 140px; left: 3px; top: 0px;" data-block-id="d5a2dd85edacb3daae578e27188f0cf6"><div class="sl-block-content" style="z-index: 11;"><img data-natural-width="1009" data-natural-height="900" style="" data-src="docker/1609019-pasted-from-clipboard.png"></div></div>
+<div class="sl-block" data-block-type="text" data-block-id="4d40ccc0dac6a69f47430c4c5f7bc8a4" style="height: auto; min-width: 30px; min-height: 30px; width: 600px; left: 174px; top: 194px;"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 12;">
+<p>Now let's change our index.php file</p>
+
+<p>to display <em>phpinfo() :</em></p>
+</div></div>
+<div class="sl-block" data-block-type="code" data-block-id="7a300535706dc46b87bd40284468e20e" style="min-width: 30px; min-height: 30px; width: 500px; height: 101px; left: 230px; top: 340px;"><div class="sl-block-content" style="z-index: 13; border: 1px solid rgb(0, 0, 0);"><pre><code>&lt;?php
+
+phpinfo();</code></pre></div></div>
+<div class="sl-block" data-block-type="image" style="min-width: 30px; min-height: 30px; width: 97.8461538461539px; height: 80px; left: 782px; top: 0px;" data-block-id="b386fb4dedcee3b7434581531ccd692d"><div class="sl-block-content" style="z-index: 15;"><img style="" data-natural-width="318" data-natural-height="260" data-src="docker/1609080-hernandito-hernando-apachephp-docker-latest-icon.png"></div></div>
+<div class="sl-block" data-block-type="image" style="min-width: 30px; min-height: 30px; width: 44.0463320463321px; height: 62px; left: 889px; top: 8px;" data-block-id="ea7d3bede4b3f4c70206a27ccc0aa2fd"><div class="sl-block-content" style="z-index: 16;"><img data-natural-width="184" data-natural-height="259" style="" data-src="docker/1609079-php7-transparent.png"></div></div></section><section><div class="sl-block" data-block-type="text" style="width: 800px; left: 123px; top: 66px; height: auto;" data-block-id="2fcf845c27650e8388f64757f4ed3bb9"><div class="sl-block-content" data-placeholder-tag="h2" data-placeholder-text="Title Text" style="z-index: 10;" dir="ui">
+<h2>How to add PHP code ?</h2>
+</div></div>
+<div class="sl-block" data-block-type="image" style="width: 156.955555555556px; height: 140px; left: 3px; top: 0px;" data-block-id="33771653cd6a8162935d7eb3de6db610"><div class="sl-block-content" style="z-index: 11;"><img data-natural-width="1009" data-natural-height="900" style="" data-src="docker/1609019-pasted-from-clipboard.png"></div></div>
+<div class="sl-block" data-block-type="image" data-block-id="112a09a9f1d9bf236832fc0b7e9725c0" style="min-width: 30px; min-height: 30px; width: 636px; height: 375.946666666667px; left: 160px; top: 210px;"><div class="sl-block-content" style="z-index: 12; border-style: solid; border-width: 1px;"><img style="" data-natural-width="450" data-natural-height="266" data-src="docker/1609190-giphy__2_.gif"></div></div>
+<div class="sl-block" data-block-type="image" style="min-width: 30px; min-height: 30px; width: 97.8461538461539px; height: 80px; left: 782px; top: 0px;" data-block-id="4ba5bebec714047035cc00bc7216557c"><div class="sl-block-content" style="z-index: 14;"><img style="" data-natural-width="318" data-natural-height="260" data-src="docker/1609080-hernandito-hernando-apachephp-docker-latest-icon.png"></div></div>
+<div class="sl-block" data-block-type="image" style="min-width: 30px; min-height: 30px; width: 44.0463320463321px; height: 62px; left: 889px; top: 8px;" data-block-id="1d370c1cf4fd0902bdbece55e73ad161"><div class="sl-block-content" style="z-index: 15;"><img data-natural-width="184" data-natural-height="259" style="" data-src="docker/1609079-php7-transparent.png"></div></div></section><section><div class="sl-block" data-block-type="text" style="width: 800px; left: 123px; top: 66px; height: auto;" data-block-id="9be80218d82812eec2b94f694150caaf"><div class="sl-block-content" data-placeholder-tag="h2" data-placeholder-text="Title Text" style="z-index: 10;" dir="ui">
+<h2>How to add PHP code ?</h2>
+</div></div>
+<div class="sl-block" data-block-type="image" style="width: 156.955555555556px; height: 140px; left: 3px; top: 0px;" data-block-id="ad48d6e1ef3702cfaa2b2438fec5daf7"><div class="sl-block-content" style="z-index: 11;"><img data-natural-width="1009" data-natural-height="900" style="" data-src="docker/1609019-pasted-from-clipboard.png"></div></div>
+<div class="sl-block" data-block-type="text" data-block-id="0c86b50673cb6e1374683f8f8dc0556d" style="height: auto; min-width: 30px; min-height: 30px; width: 893px; left: 30px; top: 255px;"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 12;">
+<p>As <strong>babacooll/lftapachephp7project </strong>is an <em>inert </em>image of Apache + PHP7 + Our project, a modification in my local files CAN'T affect this image.</p>
+
+<p> </p>
+
+<p>As our <strong>container</strong> is a living <strong>babacooll/lftapachephp7project</strong>,</p>
+
+<p>a modification in my local files CAN'T affect this container.</p>
+</div></div>
+<div class="sl-block" data-block-type="image" style="min-width: 30px; min-height: 30px; width: 97.8461538461539px; height: 80px; left: 782px; top: 0px;" data-block-id="32844704249e567a516627699ae4f352"><div class="sl-block-content" style="z-index: 14;"><img style="" data-natural-width="318" data-natural-height="260" data-src="docker/1609080-hernandito-hernando-apachephp-docker-latest-icon.png"></div></div>
+<div class="sl-block" data-block-type="image" style="min-width: 30px; min-height: 30px; width: 44.0463320463321px; height: 62px; left: 889px; top: 8px;" data-block-id="44f05132cf0f25dd041d3e905f65a7a7"><div class="sl-block-content" style="z-index: 15;"><img data-natural-width="184" data-natural-height="259" style="" data-src="docker/1609079-php7-transparent.png"></div></div></section><section><div class="sl-block" data-block-type="text" style="width: 800px; left: 123px; top: 66px; height: auto;" data-block-id="4e47f8d94b340cead3f35a80ffacda9d"><div class="sl-block-content" data-placeholder-tag="h2" data-placeholder-text="Title Text" style="z-index: 10;" dir="ui">
+<h2>How to add PHP code ?</h2>
+</div></div>
+<div class="sl-block" data-block-type="image" style="width: 156.955555555556px; height: 140px; left: 3px; top: 0px;" data-block-id="445b3839c514d1474a0d64073188e980"><div class="sl-block-content" style="z-index: 11;"><img data-natural-width="1009" data-natural-height="900" style="" data-src="docker/1609019-pasted-from-clipboard.png"></div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 800px; left: 80px; top: 210px;" data-block-id="bef0dcc557c04ac3fec629b31fe93036"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 12;">
+<p>A solution would be to update files directly in the container but it would only update the <strong>​current</strong> container, not all containers related to </p>
+
+<p><strong>babacooll/lftapachephp7project.</strong>​</p>
+</div></div>
+<div class="sl-block" data-block-type="image" style="min-width: 30px; min-height: 30px; width: 97.8461538461539px; height: 80px; left: 782px; top: 0px;" data-block-id="6c99b55efd7e4be5a1a05be1516df878"><div class="sl-block-content" style="z-index: 14;"><img style="" data-natural-width="318" data-natural-height="260" data-src="docker/1609080-hernandito-hernando-apachephp-docker-latest-icon.png"></div></div>
+<div class="sl-block" data-block-type="image" style="min-width: 30px; min-height: 30px; width: 44.0463320463321px; height: 62px; left: 889px; top: 8px;" data-block-id="daec035ef98826829fb6d96c4d2a0bb9"><div class="sl-block-content" style="z-index: 15;"><img data-natural-width="184" data-natural-height="259" style="" data-src="docker/1609079-php7-transparent.png"></div></div></section><section><div class="sl-block" data-block-type="text" style="width: 800px; left: 123px; top: 66px; height: auto;" data-block-id="7edbe2bc3df3c5af791bd8c300050151"><div class="sl-block-content" data-placeholder-tag="h2" data-placeholder-text="Title Text" style="z-index: 10;" dir="ui">
+<h2>How to add PHP code ?</h2>
+</div></div>
+<div class="sl-block" data-block-type="image" style="width: 156.955555555556px; height: 140px; left: 3px; top: 0px;" data-block-id="165c9f0fc442bb13b1e3d02daeb2894e"><div class="sl-block-content" style="z-index: 11;"><img data-natural-width="1009" data-natural-height="900" style="" data-src="docker/1609019-pasted-from-clipboard.png"></div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 800px; left: 80px; top: 181px;" data-block-id="05daf037ad80ea2767c673ade1c4cd9d"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 12;">
+<p>Another (better) solution is to <strong>mount</strong> dynamically </p>
+
+<p>a <strong>volume</strong> in the container :</p>
+</div></div>
+<div class="sl-block" data-block-type="code" data-block-id="0f354ab041cd0d7aa7e57d5a7225321d" style="min-width: 30px; min-height: 30px; width: 895px; height: 158px; left: 46px; top: 420px;"><div class="sl-block-content" style="z-index: 13; font-size: 92%; border-style: solid; border-width: 1px;"><pre class="bash"><code>$ docker run \
+-dit \
+-p 80:80 \
+-v /Users/michaelgarrez/Docker/LFT/ApachePHP7Project/application/:/var/www/lft \
+babacooll/lftapachephp7project</code></pre></div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; min-width: 30px; min-height: 30px; width: 600px; left: 76px; top: 611px;" data-block-id="bcf9791474546245021511bb7605fd21"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 14;">
+<p>Local folder to mount from</p>
+</div></div>
+<div class="sl-block" data-block-type="shape" style="min-width: 4px; min-height: 4px; width: 48px; height: 87px; left: 352px; top: 517px;" data-block-id="d7c36fa8ecb72b1b58d59c9dae979d61"><div class="sl-block-content" data-shape-type="symbol-thin-arrow-up" data-shape-fill-color="#000000" data-shape-stretch="true" style="z-index: 16;"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="100%" height="100%" preserveaspectratio="none" viewbox="4 2 24 28"><g class="shape-element" fill="#000000"><path d="M27.414 12.586l-10-10c-0.781-0.781-2.047-0.781-2.828 0l-10 10c-0.781 0.781-0.781 2.047 0 2.828s2.047 0.781 2.828 0l6.586-6.586v19.172c0 1.105 0.895 2 2 2s2-0.895 2-2v-19.172l6.586 6.586c0.39 0.39 0.902 0.586 1.414 0.586s1.024-0.195 1.414-0.586c0.781-0.781 0.781-2.047 0-2.828z"></path></g></svg></div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; min-width: 30px; min-height: 30px; width: 502px; left: 449px; top: 311px;" data-block-id="89ff0efa7092182436ccbb0bd9b1a6f3"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 17;">
+<p>Container folder to mount on</p>
+</div></div>
+<div class="sl-block" data-block-type="shape" style="min-width: 4px; min-height: 4px; width: 48px; height: 88px; left: 676px; top: 376px;" data-block-id="6a07ddd4377545501562d2cbf71fa2f7"><div class="sl-block-content" data-shape-type="symbol-thin-arrow-down" data-shape-fill-color="#000000" data-shape-stretch="true" style="z-index: 18;"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="100%" height="100%" preserveaspectratio="none" viewbox="4 2 24 28"><g class="shape-element" fill="#000000"><path d="M4.586 19.414l10 10c0.781 0.781 2.047 0.781 2.828 0l10-10c0.781-0.781 0.781-2.047 0-2.828s-2.047-0.781-2.828 0l-6.586 6.586v-19.172c0-1.105-0.895-2-2-2s-2 0.895-2 2v19.172l-6.586-6.586c-0.391-0.39-0.902-0.586-1.414-0.586s-1.024 0.195-1.414 0.586c-0.781 0.781-0.781 2.047 0 2.828z"></path></g></svg></div></div>
+<div class="sl-block" data-block-type="image" style="min-width: 30px; min-height: 30px; width: 97.8461538461539px; height: 80px; left: 782px; top: 0px;" data-block-id="c31bd1ef48de0fac9c13a98cd05f356d"><div class="sl-block-content" style="z-index: 19;"><img style="" data-natural-width="318" data-natural-height="260" data-src="docker/1609080-hernandito-hernando-apachephp-docker-latest-icon.png"></div></div>
+<div class="sl-block" data-block-type="image" style="min-width: 30px; min-height: 30px; width: 44.0463320463321px; height: 62px; left: 889px; top: 8px;" data-block-id="8862102fca14b400c57c596731ccc4b5"><div class="sl-block-content" style="z-index: 20;"><img data-natural-width="184" data-natural-height="259" style="" data-src="docker/1609079-php7-transparent.png"></div></div></section></section><section class="stack"><section><div class="sl-block" data-block-type="text" style="width: 800px; left: 82px; top: 136px; height: auto;" data-block-id="a8ebdf68113910f4177848e27f4ea01e"><div class="sl-block-content" data-placeholder-tag="h2" data-placeholder-text="Title Text" style="z-index: 11;" dir="ui">
+<h2>Image : MariaDB</h2>
+</div></div>
+<div class="sl-block" data-block-type="image" style="width: 156.955555555556px; height: 140px; left: 3px; top: 0px;" data-block-id="09b7da9f4ce64e8ec5f2c9c2bd4a9e4c"><div class="sl-block-content" style="z-index: 12;"><img data-natural-width="1009" data-natural-height="900" style="" data-src="docker/1609019-pasted-from-clipboard.png"></div></div>
+<div class="sl-block" data-block-type="image" data-block-id="0e7f60bd6b867496b60c3c4abab3db54" style="min-width: 30px; min-height: 30px; width: 360px; height: 270.731707317073px; left: 300px; top: 284.5px;"><div class="sl-block-content" style="z-index: 13;"><img data-natural-width="246" data-natural-height="185" style="" data-src="docker/1609257-logo.png"></div></div></section><section><div class="sl-block" data-block-type="text" style="width: 800px; left: 82px; top: 66px; height: auto;" data-block-id="eabc8b82c43e87844e5aee4ede9127c0"><div class="sl-block-content" data-placeholder-tag="h2" data-placeholder-text="Title Text" style="z-index: 11;" dir="ui">
+<h2>Docker Hub</h2>
+</div></div>
+<div class="sl-block" data-block-type="image" style="width: 156.955555555556px; height: 140px; left: 3px; top: 0px;" data-block-id="4cc4d9c0530a16ed573815a6bb0cb2bb"><div class="sl-block-content" style="z-index: 12;"><img data-natural-width="1009" data-natural-height="900" style="" data-src="docker/1609019-pasted-from-clipboard.png"></div></div>
+<div class="sl-block" data-block-type="image" style="min-width: 30px; min-height: 30px; width: 115.686486486486px; height: 87px; left: 822px; top: 7px;" data-block-id="90cf2acafd003ddb7874bbd34767f9bd"><div class="sl-block-content" style="z-index: 13;"><img data-natural-width="246" data-natural-height="185" style="" data-src="docker/1609257-logo.png"></div></div>
+<div class="sl-block" data-block-type="text" data-block-id="9758456b2bf9900d7468ae33c5bfae8f" style="height: auto; min-width: 30px; min-height: 30px; width: 600px; left: 180px; top: 210px;"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 14;">
+<p>Let's use the official <strong>mariadb</strong> repository</p>
+</div></div>
+<div class="sl-block" data-block-type="code" data-block-id="e000e900fe5e8e61312f89b2ccfea126" style="min-width: 30px; min-height: 30px; width: 523px; height: 70px; left: 221px; top: 350px;"><div class="sl-block-content" style="z-index: 15; font-size: 150%; border-style: solid; border-width: 1px;"><pre class="bash"><code>$ docker pull mariadb</code></pre></div></div></section><section><div class="sl-block" data-block-type="text" style="width: 800px; left: 82px; top: 66px; height: auto;" data-block-id="0250331cdf6c43b18ea9af383a1856ad"><div class="sl-block-content" data-placeholder-tag="h2" data-placeholder-text="Title Text" style="z-index: 10;" dir="ui">
+<h2>MariaDB Container</h2>
+</div></div>
+<div class="sl-block" data-block-type="image" style="width: 156.955555555556px; height: 140px; left: 3px; top: 0px;" data-block-id="1ddf77041e54f1c79607607b70e77834"><div class="sl-block-content" style="z-index: 11;"><img data-natural-width="1009" data-natural-height="900" style="" data-src="docker/1609019-pasted-from-clipboard.png"></div></div>
+<div class="sl-block" data-block-type="image" style="width: 115.686486486486px; height: 87px; left: 822px; top: 7px;" data-block-id="cf04e3cbd48ae4d280493a3742a4ac26"><div class="sl-block-content" style="z-index: 12;"><img data-natural-width="246" data-natural-height="185" style="" data-src="docker/1609257-logo.png"></div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 600px; left: 180px; top: 210px;" data-block-id="f7cb114727be894fe49ea64bdf54980f"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 13;">
+<p>To run a Container with <strong>MariaDB :</strong></p>
+</div></div>
+<div class="sl-block" data-block-type="code" style="width: 943px; height: 141px; left: 11px; top: 313px;" data-block-id="22c63469d58b73f73cdc2e39b5ca634a"><div class="sl-block-content" style="z-index: 15; border-style: solid; border-width: 1px;"><pre class="bash"><code>$ docker run \
+--name mymariadb \
+-e MYSQL_ROOT_PASSWORD=mypassword \
+-e MYSQL_DATABASE=lft \
+-d \
+mariadb</code></pre></div></div></section><section><div class="sl-block" data-block-type="text" style="width: 800px; left: 82px; top: 66px; height: auto;" data-block-id="462b2a74cd906a77a46087a97b841e89"><div class="sl-block-content" data-placeholder-tag="h2" data-placeholder-text="Title Text" style="z-index: 10;" dir="ui">
+<h2>MariaDB Container</h2>
+</div></div>
+<div class="sl-block" data-block-type="image" style="width: 156.955555555556px; height: 140px; left: 3px; top: 0px;" data-block-id="49881660426b6b0014d09658c7813200"><div class="sl-block-content" style="z-index: 11;"><img data-natural-width="1009" data-natural-height="900" style="" data-src="docker/1609019-pasted-from-clipboard.png"></div></div>
+<div class="sl-block" data-block-type="image" data-block-id="67c13bcd9e5384d418741433725924ec" style="min-width: 30px; min-height: 30px; width: 709px; height: 392.873711340206px; left: 126px; top: 266px;"><div class="sl-block-content" style="z-index: 13; border-style: solid; border-width: 1px;"><img style="" data-natural-width="388" data-natural-height="215" data-src="docker/1609278-giphy__3_.gif"></div></div>
+<div class="sl-block" data-block-type="text" data-block-id="bd72b884a552c13ac7c73463f0b6c58c" style="height: auto; min-width: 30px; min-height: 30px; width: 600px; left: 180px; top: 182px;"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 14;">
+<p>That's all for the MariaDB container !</p>
+</div></div>
+<div class="sl-block" data-block-type="image" style="width: 83.772972972973px; height: 63px; left: 854px; top: 10px;" data-block-id="daa8673f01610138548872a7ac05d5d6"><div class="sl-block-content" style="z-index: 15;"><img data-natural-width="246" data-natural-height="185" style="" data-src="docker/1609257-logo.png"></div></div></section><section><div class="sl-block" data-block-type="text" style="width: 800px; left: 82px; top: 66px; height: auto;" data-block-id="e35b6a221afb33da3dedde184e876c1c"><div class="sl-block-content" data-placeholder-tag="h2" data-placeholder-text="Title Text" style="z-index: 10;" dir="ui">
+<h2>Link Containers</h2>
+</div></div>
+<div class="sl-block" data-block-type="image" style="width: 156.955555555556px; height: 140px; left: 3px; top: 0px;" data-block-id="066809dbfd90b12c30df6d4126348cbd"><div class="sl-block-content" style="z-index: 11;"><img data-natural-width="1009" data-natural-height="900" style="" data-src="docker/1609019-pasted-from-clipboard.png"></div></div>
+<div class="sl-block" data-block-type="image" style="width: 83.772972972973px; height: 63px; left: 854.22705078125px; top: 10px;" data-block-id="993c97258e2bfdc06039a4c3cb6e3e5d"><div class="sl-block-content" style="z-index: 12;"><img data-natural-width="246" data-natural-height="185" style="" data-src="docker/1609257-logo.png"></div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 600px; left: 182px; top: 181px;" data-block-id="1f97e66114479b093274fbfbc3649184"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 13;">
+<p>Let's link our application to MariaDB !</p>
+</div></div>
+<div class="sl-block" data-block-type="code" data-block-id="f3cb029a31edc841559bb84af2a20409" style="min-width: 30px; min-height: 30px; width: 862px; height: 210px; left: 49px; top: 280px;"><div class="sl-block-content" style="z-index: 14; border-style: solid; border-width: 1px;"><pre><code>&lt;?php
+
+try {
+    $dbh = new PDO('mysql:host=mariadbcontainer;dbname=lft', 'root', 'mypassword');
+} catch (PDOException $e) {
+    print "Erreur !: " . $e-&gt;getMessage() . "&lt;br/&gt;";
+    die();
+}
+</code></pre></div></div>
+<div class="sl-block" data-block-type="image" style="min-width: 30px; min-height: 30px; width: 97.8461538461539px; height: 80px; left: 696px; top: 1px;" data-block-id="4ae4cbe1f3cfd41a66acc644b9424a12"><div class="sl-block-content" style="z-index: 16;"><img style="" data-natural-width="318" data-natural-height="260" data-src="docker/1609080-hernandito-hernando-apachephp-docker-latest-icon.png"></div></div>
+<div class="sl-block" data-block-type="image" style="min-width: 30px; min-height: 30px; width: 44.0463320463321px; height: 62px; left: 803px; top: 9px;" data-block-id="6e88a1a335e8b508b85558b1795de3de"><div class="sl-block-content" style="z-index: 17;"><img data-natural-width="184" data-natural-height="259" style="" data-src="docker/1609079-php7-transparent.png"></div></div></section><section><div class="sl-block" data-block-type="text" style="width: 800px; left: 82px; top: 66px; height: auto;" data-block-id="ca5a0553c7ddc8a53714d8fe1d1e639f"><div class="sl-block-content" data-placeholder-tag="h2" data-placeholder-text="Title Text" style="z-index: 10;" dir="ui">
+<h2>Link Containers</h2>
+</div></div>
+<div class="sl-block" data-block-type="image" style="width: 156.955555555556px; height: 140px; left: 3px; top: 0px;" data-block-id="b27b9c8a80b54d1f0bf35d52e28be3fb"><div class="sl-block-content" style="z-index: 11;"><img data-natural-width="1009" data-natural-height="900" style="" data-src="docker/1609019-pasted-from-clipboard.png"></div></div>
+<div class="sl-block" data-block-type="image" style="width: 83.772972972973px; height: 63px; left: 854.22705078125px; top: 10px;" data-block-id="1aaf89ad1f10912b5a4e092d4670378c"><div class="sl-block-content" style="z-index: 12;"><img data-natural-width="246" data-natural-height="185" style="" data-src="docker/1609257-logo.png"></div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 600px; left: 182px; top: 181px;" data-block-id="5b8f4b127b7060e8b1fbb11f5fb95e63"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 14;">
+<p>Our <em>PHP container</em> has no knowledge of the <em>MariaDB container</em>.</p>
+
+<p> </p>
+
+<p>Let's fix that !</p>
+</div></div>
+<div class="sl-block" data-block-type="image" style="width: 97.8461538461539px; height: 80px; left: 696px; top: 1px;" data-block-id="db678741d4c62f8d84ab72ad006b66f6"><div class="sl-block-content" style="z-index: 15;"><img style="" data-natural-width="318" data-natural-height="260" data-src="docker/1609080-hernandito-hernando-apachephp-docker-latest-icon.png"></div></div>
+<div class="sl-block" data-block-type="image" style="width: 44.0463320463321px; height: 62px; left: 803px; top: 9px;" data-block-id="c71dbcd83bb7265297958e9c84bdea0e"><div class="sl-block-content" style="z-index: 16;"><img data-natural-width="184" data-natural-height="259" style="" data-src="docker/1609079-php7-transparent.png"></div></div>
+<div class="sl-block" data-block-type="code" style="min-width: 30px; min-height: 30px; width: 906px; height: 136px; left: 27px; top: 424px;" data-block-id="bf31cdf2ec1e665a44c3c374f052296d"><div class="sl-block-content" style="z-index: 17; font-size: 92%; border-style: solid; border-width: 1px;"><pre class="bash"><code>$ docker run \
+-dit \
+-p 80:80 \
+--link mymariadb:mariadbcontainer \
+-v /Users/michaelgarrez/Docker/LFT/ApachePHP7Project/application/:/var/www/lft \
+babacooll/lftapachephp7project</code></pre></div></div></section></section><section class="stack"><section><div class="sl-block" data-block-type="text" style="width: 800px; left: 82px; top: 66px; height: auto;" data-block-id="04f541f895aa097cedd8c62ed3aea9c2"><div class="sl-block-content" data-placeholder-tag="h2" data-placeholder-text="Title Text" style="z-index: 10;" dir="ui">
+<h2>Docker Hub</h2>
+</div></div>
+<div class="sl-block" data-block-type="image" style="width: 156.955555555556px; height: 140px; left: 3px; top: 0px;" data-block-id="7ceda46fdd6e2510acb185f80b8fc857"><div class="sl-block-content" style="z-index: 11;"><img data-natural-width="1009" data-natural-height="900" style="" data-src="docker/1609019-pasted-from-clipboard.png"></div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 836px; left: 62px; top: 248px;" data-block-id="5798dadedf7fda3a8c1d40729eaae334"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 14;">
+<p>Docker Hub contains a lot of images for various purposes.</p>
+
+<p> </p>
+
+<p>Docker Hub provides a free storage facility for your <strong>public</strong> images and a paying storage facility for your <strong>private </strong>images (GitHub style).</p>
+</div></div></section><section><div class="sl-block" data-block-type="text" style="width: 800px; left: 82px; top: 66px; height: auto;" data-block-id="12475dc6f4aada094698bed74dca7dba"><div class="sl-block-content" data-placeholder-tag="h2" data-placeholder-text="Title Text" style="z-index: 11;" dir="ui">
+<h2>Push on Docker Hub</h2>
+</div></div>
+<div class="sl-block" data-block-type="image" style="width: 156.955555555556px; height: 140px; left: 3px; top: 0px;" data-block-id="9741df868dacb686922cd0fde15c8218"><div class="sl-block-content" style="z-index: 12;"><img data-natural-width="1009" data-natural-height="900" style="" data-src="docker/1609019-pasted-from-clipboard.png"></div></div>
+<div class="sl-block" data-block-type="code" data-block-id="d965d5f80ffc6893730d6991c04156fd" style="min-width: 30px; min-height: 30px; width: 800px; height: 47px; left: 80px; top: 210px;"><div class="sl-block-content" style="z-index: 13; font-size: 151%;"><pre><code>$ docker push babacooll/lftapachephp7project</code></pre></div></div></section><section><div class="sl-block" data-block-type="text" style="width: 800px; left: 82px; top: 66px; height: auto;" data-block-id="e0f3b6d10d986c8074994936ffcad09a"><div class="sl-block-content" data-placeholder-tag="h2" data-placeholder-text="Title Text" style="z-index: 11;" dir="ui">
+<h2>Pull on Docker Hub</h2>
+</div></div>
+<div class="sl-block" data-block-type="image" style="width: 156.955555555556px; height: 140px; left: 3px; top: 0px;" data-block-id="d8670410a257454550ba01a3796be50f"><div class="sl-block-content" style="z-index: 12;"><img data-natural-width="1009" data-natural-height="900" style="" data-src="docker/1609019-pasted-from-clipboard.png"></div></div>
+<div class="sl-block" data-block-type="code" style="width: 802px; height: 47px; left: 80px; top: 210px;" data-block-id="4150dfe90dca7983a0e3579aa71d832e"><div class="sl-block-content" style="z-index: 13; font-size: 151%;"><pre><code>$ docker pull babacooll/lftapachephp7project</code></pre></div></div></section><section><div class="sl-block" data-block-type="text" style="width: 800px; left: 82px; top: 66px; height: auto;" data-block-id="3a09a8eb68d83a32e8ee28add14c97f1"><div class="sl-block-content" data-placeholder-tag="h2" data-placeholder-text="Title Text" style="z-index: 11;" dir="ui">
+<h2>Automated Builds</h2>
+</div></div>
+<div class="sl-block" data-block-type="image" style="width: 156.955555555556px; height: 140px; left: 3px; top: 0px;" data-block-id="d12206ed05e857e82dbe6ca929dfdb29"><div class="sl-block-content" style="z-index: 12;"><img data-natural-width="1009" data-natural-height="900" style="" data-src="docker/1609019-pasted-from-clipboard.png"></div></div>
+<div class="sl-block" data-block-type="text" data-block-id="c6314213aa6c37355ee896ddcd363f34" style="height: auto; min-width: 30px; min-height: 30px; width: 798.5px; left: 83px; top: 210px;"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 13;">
+<p>Docker Hub allows you to link a GitHub repository to a Docker Hub repository.</p>
+
+<p> </p>
+
+<p>Your GitHub repository should contain a <strong>Dockerfile </strong>on the root directory.</p>
+
+<p> </p>
+
+<p>Each time you push on GitHub, Docker Hub (through webhooks) will pull your repository and build an image into your Docker Hub repository.</p>
+</div></div></section></section><section class="stack"><section><div class="sl-block" data-block-type="text" style="width: 800px; left: 82px; top: 66px; height: auto;" data-block-id="22db1998d520af7073fc13f6778469f6"><div class="sl-block-content" data-placeholder-tag="h2" data-placeholder-text="Title Text" style="z-index: 10;" dir="ui">
+<h2>Orchestration</h2>
+</div></div>
+<div class="sl-block" data-block-type="image" style="width: 156.955555555556px; height: 140px; left: 3px; top: 0px;" data-block-id="4523a2bd285a7c308d524131aa9713de"><div class="sl-block-content" style="z-index: 11;"><img data-natural-width="1009" data-natural-height="900" style="" data-src="docker/1609019-pasted-from-clipboard.png"></div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 640px; left: 160px; top: 248px;" data-block-id="b817e251132e6ea5e04fd9951bd24f95"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 14;">
+<p>Running all containers <em>by hand</em> can</p>
+
+<p>be really messy and complicated.</p>
+
+<p> </p>
+
+<p>But Docker has a solution for us :</p>
+
+<p> </p>
+
+<p><em>Docker Compose</em></p>
+</div></div></section><section><div class="sl-block" data-block-type="text" style="width: 800px; left: 82px; top: 66px; height: auto;" data-block-id="f5a1629faa96cdb76dbd9372ea63da9a"><div class="sl-block-content" data-placeholder-tag="h2" data-placeholder-text="Title Text" style="z-index: 11;" dir="ui">
+<h2>Orchestration</h2>
+</div></div>
+<div class="sl-block" data-block-type="image" style="width: 156.955555555556px; height: 140px; left: 3px; top: 0px;" data-block-id="9820b4e2b8c7c161c31b5063bd4a9729"><div class="sl-block-content" style="z-index: 12;"><img data-natural-width="1009" data-natural-height="900" style="" data-src="docker/1609019-pasted-from-clipboard.png"></div></div>
+<div class="sl-block" data-block-type="text" data-block-id="74765574a0dffb196811963c739e6aa1" style="height: auto; min-width: 30px; min-height: 30px; width: 798px; left: 80px; top: 171px;"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 13;">
+<p>For the moment our <strong>simple </strong>application requires us to do those commands :</p>
+</div></div>
+<div class="sl-block" data-block-type="code" data-block-id="6bcb257be6e029433b4f4a993d6fbb19" style="min-width: 30px; min-height: 30px; width: 884px; height: 300px; left: 37px; top: 308px;"><div class="sl-block-content" style="z-index: 14; border-style: solid; border-width: 1px;"><pre><code>$ docker run \
+--name mymariadb \
+-e MYSQL_ROOT_PASSWORD=mypassword \
+-e MYSQL_DATABASE=lft \
+-d \
+mariadb
+
+$ docker run \
+-dit \
+-p 80:80 \
+--link mymariadb:mariadbcontainer \
+-v /Users/michaelgarrez/Docker/LFT/ApachePHP7Project/application/:/var/www/lft \
+babacooll/lftapachephp7project</code></pre></div></div></section><section><div class="sl-block" data-block-type="text" style="width: 800px; left: 82px; top: 66px; height: auto;" data-block-id="9dfe799b1eda13453277a7ee3def06cb"><div class="sl-block-content" data-placeholder-tag="h2" data-placeholder-text="Title Text" style="z-index: 11;" dir="ui">
+<h2>Orchestration</h2>
+</div></div>
+<div class="sl-block" data-block-type="image" style="width: 156.955555555556px; height: 140px; left: 3px; top: 0px;" data-block-id="c5c75f72ea77e8f25770bd3de6d46e6e"><div class="sl-block-content" style="z-index: 12;"><img data-natural-width="1009" data-natural-height="900" style="" data-src="docker/1609019-pasted-from-clipboard.png"></div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 798px; left: 80px; top: 195px;" data-block-id="a0e18a166113a24606547b78ce7549f2"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 13;">
+<p>Solutions ?</p>
+
+<p> </p>
+
+<ul>
+	<li>Put those commands into a README ?</li>
+	<li>Put those commands into a bash script ?</li>
+</ul>
+
+<p> </p>
+
+<p>No.</p>
+
+<p> </p>
+
+<p>The solution is Docker compose !</p>
+</div></div></section><section><div class="sl-block" data-block-type="text" style="width: 800px; left: 82px; top: 66px; height: auto;" data-block-id="179e042098af4e36854d4faab51090ed"><div class="sl-block-content" data-placeholder-tag="h2" data-placeholder-text="Title Text" style="z-index: 11;" dir="ui">
+<h2>Orchestration</h2>
+</div></div>
+<div class="sl-block" data-block-type="image" style="width: 156.955555555556px; height: 140px; left: 3px; top: 0px;" data-block-id="9e297be820acc9b5a4247e0ce9dfd4eb"><div class="sl-block-content" style="z-index: 12;"><img data-natural-width="1009" data-natural-height="900" style="" data-src="docker/1609019-pasted-from-clipboard.png"></div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 957px; left: 3px; top: 162px;" data-block-id="5954bf9edd27a397edc8c7e13a3c1e62"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 13;">
+<p>Docker compose works by putting a <strong>single</strong> <strong>yaml file</strong><em> </em>in your project.</p>
+
+<p> </p>
+
+<p>For example this is the corresponding <em>docker-compose.yml</em> file for our project :</p>
+</div></div>
+<div class="sl-block" data-block-type="code" data-block-id="3b73f10c8e7e60d747a36b18dc39252a" style="min-width: 30px; min-height: 30px; width: 912px; height: 300px; left: 26px; top: 377px;"><div class="sl-block-content" style="z-index: 14; border-style: solid; border-width: 1px;"><pre class="none"><code>web:
+  image: babacooll/lftapachephp7project
+  ports:
+    - "80:80"
+  volumes:
+    - /Users/michaelgarrez/Docker/LFT/ApachePHP7Project/application/:/var/www/lft
+  links:
+    - mariadb:mariadbcontainer
+
+mariadb:
+    image: mariadb
+    environment:
+        MYSQL_ROOT_PASSWORD: mypassword
+        MYSQL_DATABASE: lft
+</code></pre></div></div></section><section><div class="sl-block" data-block-type="text" style="width: 800px; left: 82px; top: 66px; height: auto;" data-block-id="47fc7330372a60abf990a7a932d75311"><div class="sl-block-content" data-placeholder-tag="h2" data-placeholder-text="Title Text" style="z-index: 11;" dir="ui">
+<h2>Orchestration</h2>
+</div></div>
+<div class="sl-block" data-block-type="image" style="width: 156.955555555556px; height: 140px; left: 3px; top: 0px;" data-block-id="32e6fee3755b585f63c94f2cce934b96"><div class="sl-block-content" style="z-index: 12;"><img data-natural-width="1009" data-natural-height="900" style="" data-src="docker/1609019-pasted-from-clipboard.png"></div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 940px; left: 12px; top: 280px;" data-block-id="34b0dc734232bccf034b346fa168e16f"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 13;">
+<p>Our project can now be started by a simple command :</p>
+</div></div>
+<div class="sl-block" data-block-type="code" style="width: 390px; height: 61px; left: 287px; top: 390px;" data-block-id="cd886d6ea9d37afc2d64be6aaa527c3a"><div class="sl-block-content" style="z-index: 14; border-style: solid; border-width: 1px; font-size: 150%;"><pre class="bash"><code>$ docker-compose up -d</code></pre></div></div></section></section><section><div class="sl-block" data-block-type="text" style="width: 800px; left: 82px; top: 66px; height: auto;" data-block-id="eff4dec7342e2ed358af0b9eb2595125"><div class="sl-block-content" data-placeholder-tag="h2" data-placeholder-text="Title Text" style="z-index: 11;" dir="ui">
+<h2>Scalability</h2>
+</div></div>
+<div class="sl-block" data-block-type="image" style="width: 156.955555555556px; height: 140px; left: 3px; top: 0px;" data-block-id="57ea38dfb6ec4e5fbcafad9d6c8892a5"><div class="sl-block-content" style="z-index: 12;"><img data-natural-width="1009" data-natural-height="900" style="" data-src="docker/1609019-pasted-from-clipboard.png"></div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 640px; left: 160px; top: 248px;" data-block-id="f4d5fc5275055bc38673f9cc98d8c3a0"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 13;">
+<p>Docker compose allows you to multiply a container by using the <em>scale </em>command :</p>
+</div></div>
+<div class="sl-block" data-block-type="code" data-block-id="d64fe9d80be57e1b0f98f74e646ef151" style="min-width: 30px; min-height: 30px; width: 574px; height: 63px; left: 193px; top: 357px;"><div class="sl-block-content" style="z-index: 14; font-size: 150%;"><pre><code>$ docker-compose scale mariadb=5</code></pre></div></div>
+<div class="sl-block" data-block-type="text" data-block-id="38ebecceebb94c48ac6053eee3999500" style="height: auto; min-width: 30px; min-height: 30px; width: 800px; left: 82px; top: 443px;"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 15;">
+<p>To allow links to properly function you have to stop <strong>and </strong>remove your web container and relaunch it :</p>
+</div></div>
+<div class="sl-block" data-block-type="code" data-block-id="87764f838ac96b11c34ecfdba158e993" style="min-width: 30px; min-height: 30px; width: 567px; height: 115px; left: 197px; top: 540px;"><div class="sl-block-content" style="z-index: 16; border-style: solid; border-width: 1px;"><pre class="bash"><code>$ docker-compose stop web
+$ docker-compose rm web
+$ docker-compose run -d web</code></pre></div></div></section><section><div class="sl-block" data-block-type="image" style="width: 156.955555555556px; height: 140px; left: 3px; top: 0px;" data-block-id="31a90b8e26652788acf5eb3f0f3ce1c5"><div class="sl-block-content" style="z-index: 11;"><img data-natural-width="1009" data-natural-height="900" style="" data-src="docker/1609019-pasted-from-clipboard.png"></div></div>
+<div class="sl-block" data-block-type="image" data-block-id="b2dd28f2546498c2ce6bf952622a4a75" style="min-width: 30px; min-height: 30px; width: 746.166666666667px; height: 407px; left: 107px; top: 201px;"><div class="sl-block-content" style="z-index: 12; border-style: solid; border-width: 6px;"><img style="" data-natural-width="495" data-natural-height="270" data-src="docker/1609425-giphy__4_.gif"></div></div></section>
+			</div>
+		</div>
+
+		<script>
+			var SLConfig = {"deck": {"id":463925,"slug":"docker","title":"Docker","description":"","visibility":"all","published_at":"2015-07-30T12:52:38.824Z","sanitize_messages":null,"thumbnail_url":"https://s3.amazonaws.com/media-p.slid.es/thumbnails/secure/c80bb5/decks.jpg","view_count":1,"user":{"id":180211,"username":"babacooll","name":"Babacooll","description":null,"thumbnail_url":"https://lh5.googleusercontent.com/-3YpaWCGw0oc/AAAAAAAAAAI/AAAAAAAAADo/2lysHoYaOR4/photo.jpg","pro":true,"enterprise":false,"enterprise_manager":false,"settings":{"id":141607,"present_controls":true,"present_upsizing":true},"registered":true},"background_transition":"slide","transition":"slide","theme_id":null,"theme_font":"montserrat","theme_color":"sky-blue","auto_slide_interval":0,"comments_enabled":true,"forking_enabled":true,"rolling_links":false,"center":false,"should_loop":false,"rtl":false,"version":2,"notes":{}}};
+			SLConfig.current_user = {
+				name: "Babacooll",
+				username: "babacooll",
+				pro: true
+			};
+		</script>
+
+		<script src="lib/head.min.js"></script>
+		<script src="lib/reveal.min.js"></script>
+		<script>
+			Reveal.initialize({
+				controls: true,
+				progress: true,
+				history: true,
+				mouseWheel: false,
+
+				autoSlide: SLConfig.deck.auto_slide_interval || 0,
+				autoSlideStoppable: true,
+
+				rolling_links: SLConfig.deck.rolling_links || true,
+				center: SLConfig.deck.center || false,
+				loop: SLConfig.deck.should_loop || false,
+				rtl: SLConfig.deck.rtl || false,
+
+				transition: SLConfig.deck.transition,
+				backgroundTransition: SLConfig.deck.background_transition,
+
+				dependencies: [
+					{ src: 'lib/reveal-plugins/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'lib/reveal-plugins/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'lib/reveal-plugins/highlight/highlight.js', async: true, callback: function() { hljs.initHighlighting(); hljs.initHighlightingOnLoad(); } },
+					{ src: 'lib/reveal-plugins/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
+				]
+			});
+
+			// Make Slides speaker notes available in the reveal.js speaker view
+			if( SLConfig.deck.notes ) {
+				[].forEach.call( document.querySelectorAll( '.reveal .slides section' ), function( slide ) {
+
+					var value = SLConfig.deck.notes[ slide.getAttribute( 'data-id' ) ];
+					if( value && typeof value === 'string' ) {
+						slide.setAttribute( 'data-notes', value );
+					}
+
+				} );
+			}
+		</script>
+
+		
+
+	</body>
+</html>
